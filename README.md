@@ -1,2 +1,2 @@
 # Appjoteca-library
- Appjoteca for MJB
+AppJoteca for Manuel J. Betancur
