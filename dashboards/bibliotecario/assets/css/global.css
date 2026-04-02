@@ -1,0 +1,314 @@
+:root {
+  --background: #000000;                    /* Fondo principal */
+  --surface-container-low: #0a0a0a;
+  --surface-container: #080808;          /* Cards principales */
+  --surface-container-high: #0f0f0f;
+  --surface-container-highest: #1a1a1a;
+  --primary: #f2ca50;                    /* Oro principal */
+  --primary-container: #d4af37;          /* Oro más oscuro */
+  --on-primary: #3c2f00;
+  --secondary: #c9c6c5;
+  --tertiary: #bfcdff;
+  --error: #ffb4ab;
+  --font-headline: "Noto Serif", serif;
+  --font-body: "Manrope", system-ui, sans-serif;  
+  --topbar-height: 80px;
+  --sidebar-width: 280px;     
+  --border-radius: 16px;                 /* Para cards y botones grandes */
+  --border-radius-sm: 8px;
+  --glass-opacity: 0.7;      
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;   
+  --outline: #99907c; 
+}
+
+.material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+
+.headline-xl { 
+  font-family: var(--font-headline);
+  font-size: 2.75rem;      /* ~44px */
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.headline-lg { 
+  font-family: var(--font-headline);
+  font-size: 2rem;         /* 32px */
+  font-weight: 700;
+}
+
+.headline-md { 
+  font-family: var(--font-headline);
+  font-size: 1.5rem;       /* 24px */
+  font-weight: 600;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;    /* 17px */
+  line-height: 1.6;
+}
+
+.text-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem;     /* 14px */
+}
+
+.text-xs {
+  font-family: var(--font-body);
+  font-size: 0.75rem;      /* 12px */
+  letter-spacing: 0.02em;
+}
+
+/* Colores según tu paleta */
+.text-primary { 
+    color: var(--primary) 
+}
+.text-secondary {
+    color: var(--secondary)
+}
+.text-outline { 
+    color: #99907c; 
+}
+.text-tertiary  { 
+    color: var(--tertiary); 
+}
+.btn-text {
+    color: var(--on-primary)
+}
+.white-text{
+    color: #fafafa
+}
+.label{
+    color: #b0b0b0
+}
+.error{
+    color: var(--error)
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+background-color: var(--background);
+font-family: var(--font-body);
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+.topbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  background: var(--surface);
+  border-bottom: 1px solid rgba(153, 144, 124, 0.15);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(50px);
+}
+.topbar-inner{
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  padding: 0 32px;
+}
+.topbar-derecha{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.notification-tray span{
+  font-size: 26px;
+  color: var(--tertiary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.profile-button{
+  font-size: 26px;
+  color: var(--on-primary);
+  cursor: pointer;
+  transition: color 0.2s;
+  background-color: var(--primary);
+  outline: none;
+  border: 0.1px solid #000000;
+  border-radius: 10px;
+  width: 90px;
+  align-items: center;
+  padding: 6px;
+}
+.profile-button .material-symbols-outlined{
+  font-size: 24px;
+}
+.notification-tray span:hover{
+  color: var(--primary);
+}
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+
+}
+#logo{
+  border: 1px solid white;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 100%;
+}
+.logo h1{
+  font-family: var(--font-headline);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+.search-engine{
+  position: relative;
+  gap: 10px;
+  background-color: var(--surface-container);
+  width: 500px;
+  flex-shrink: 0;
+  margin-left: 25px;
+}
+.search-engine #search{
+  background-color: var(--surface-container);
+  border: 0px;
+  padding: 0 16px 0 52px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  width: 100%;
+  height: 40px;
+  color: #f5f5f5;
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+
+}
+#search::placeholder{
+  opacity: 0.7;
+  color: #7777;
+}
+.search-icon{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  pointer-events: none;
+  color: var(--outline);
+  font-size: 20px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  width: 300px;
+  background: var(--surface);
+  width: var(--sidebar-width);
+  top: var(--topbar-height);
+  margin-left: 0;
+  z-index: 900;
+  overflow-y: auto;
+  border-right: 1px solid rgba(153, 144, 124, 0.1) ;
+}
+
+.menu-items{
+  margin-left: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  color: var(--tertiary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background-color: var(--surface);
+}
+.active{
+   background: #0f0f0f;
+  color: #f2ca50;
+  border-left: 4px solid #d4af37;
+}
+.menu-item:hover {
+  background: #0f0f0f;
+  color: #f2ca50;
+}
+
+.metallic-gold {
+  background: linear-gradient(45deg, #f2ca50, #d4af37);
+}
+.glass-card {
+  background: rgba(8, 8, 8, 0.7);
+  backdrop-filter: blur(20px);
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background:#1a1a1a; border-radius: 10px;
+}
+
+.menu-item .material-symbols-outlined {
+  font-size: 24px;
+}
+.hamburguer {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+@media (max-width: 1024px) {
+  .hamburguer {
+    display: block;
+  }
+}
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+
+.overlay {
+  position: fixed;
+  inset: 0;                    
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 950;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;        
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Bibliotecario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <!--responsive menu button-->
+            
+                <button id="menu-activar" class="hamburguer">
+                    <span class="material-symbols-outlined">Menu</span>
+                </button>
+            
+            <!--end responsive menu button-->
+
+            <div class="logo">
+                <div id="logo"></div>
+                <h1 class="headline-md text-primary">APPJOTECA</h1>
+            </div>
+
+            <div class="search-engine">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input id="search" type="search" placeholder="Busca libros, funciones o usuarios">
+            </div>
+            
+            <div class="topbar-derecha">
+
+                <div class="notification-tray">
+                    <span class="material-symbols-outlined">notifications</span>
+                </div>
+                
+                <button class="profile-button" type="button">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+            </div>
+        </div>
+
+
+
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <nav class="sidebar-navigator">
+            
+            <ul class="menu-items">
+
+                <li>
+                    <a href="#" class="menu-item active">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="menu-texto">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <span class="menu-texto">Inventario</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <span class="menu-texto">Reservaciones</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="menu-texto">Usuarios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">school</span>
+                        <span class="menu-texto">Programas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <span class="menu-texto">Reportes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="menu-texto">Ajustes</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="main-content">
+
+        <section class="hero-section">
+            <div class="hero-content">
+                
+                <p class="text-primary text-sm">DASHBOARD PRINCIPAL</p>
+
+                <h1 class="headline-xl white-text">Supervisión de la biblioteca</h1>
+
+                <div class="hero-image">
+                    <img src="assets/images/dashboard-background.png" class="hero-background">
+
+                    <div class="hero-overlay">
+
+
+                        <div class="hero-text" id="hero-text">
+                            <h2 class="headline-xl white-text" id="headline-lg">Bienvenido de vuelta, <br> Bibliotecario</h2>
+                            <p class="text-body">Gestiona el inventario, revisa los préstamos activos y administra los usuarios de la biblioteca.</p>
+                        </div>
+
+                        <div class="hero-buttons">
+
+                    
+                            <button class="hero-image-button inventory" type="button">
+                                <span class="material-symbols-outlined">list_alt_check</span>
+                                <span class="btn-text text-body">Inventario</span>
+                            </button>
+
+                            <button class="hero-image-button users" type="button">
+                                <span class="text-body white-text">Usuarios</span>
+                            </button>
+
+                        </div>
+                    </div>
+
+                
+                    
+                </div>
+
+                
+
+            </div>
+
+
+        </section>
+
+
+
+        
+        <section class="estadisticas">
+            
+            <div class="stats-grid">
+                
+                <div class="stat-card">
+                    <p class="label text-sm">LIBROS TOTALES</p>
+                    <h3 class="stat-number white-text headline-md">12,402</h3>
+                    <span class="percentage text-tertiary text-xs">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                        +2,8%
+                    </span>
+                </div>
+
+                <div class="stat-card warning">
+                    <p class="label text-sm">APROBACIONES PENDIENTES</p>
+                    <h3 class="stat-number white-text error headline-md">48</h3>
+                    <span class=" text-xs error">
+                        ATENCIÓN URGENTE
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <p class="label text-sm">PRÉSTAMOS ACTIVOS</p>
+                    <h3 class="stat-number white-text headline-md">1284</h3>
+                    <span class="percentage text-xs text-tertiary">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                        +12%
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <p class="label text-sm">PRÉSTAMOS VENCIDOS</p>
+                    <h3 class="stat-number white-text  headline-md">15</h3>
+                    <span class="percentage text-xs text-tertiary">
+                        <span class="material-symbols-outlined">arrow_downward</span>
+                        -5%
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="two-col-grid">
+            <section class="pending">
+
+                <table class="reservation">
+                    <thead>
+                        <tr class="first-tr">
+                            <th class="headline-md white-text" colspan="3">Fila de reservación</th>
+
+                            <th class="viewbutton">
+                                <button>VER TODOS</button>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th class="text-outline text-xs">USUARIO</th>
+                            <th class="text-outline text-xs">LIBRO</th>
+                            <th class="text-outline text-xs">SOLICITADO EN</th>
+                            <th class="text-outline text-xs">ACCIÓN</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="white-text text-xs">
+                                <div class="first-td">
+                                    <span class="material-symbols-outlined text-secondary">
+                                        account_circle
+                                    </span>
+                                    <span class="name">Julián Medina</span>
+                                </div>
+                            </td>
+                            <td class="white-text text-xs">El Alquemista</td>
+                            <td class="text-outline text-xs">
+                                Oct 12, 2026
+                            </td>
+                            <td class="actions-btn">
+                                <button class="btn-accept">
+                                    <span class="material-symbols-outlined check">
+                                        check
+                                    </span>
+
+                                </button>
+                                <button class="btn-reject">
+                                    
+                                    <span class="material-symbols-outlined reject">
+                                        close
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+
+            </section>
+
+            <section class="actions">
+                <div class="one-column-grid">
+
+                    <div class="featured-card">
+                        <img src="assets/images/libro.png" class="featured-image">
+                        <div class="featured-overlay">
+                            <p class="text-xs text-primary">RESERVACIÓN DESTACADA</p>
+                            <h5 class="headline-md white-text">Cien Años de soledad</h5>
+
+                            <button class="btn-text text-body" id="btn-featured" type="button">
+                                VER DETALLES
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="socialntw-card">
+                        <p class="headline-md text-secondary">Redes sociales</p>
+                    
+
+                        <button class="white-text text-xs" id="whatsApp-icon" type="button">
+                            <span class="left-button">
+                                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                                <span class="text-body white-text">WhatsApp</span>
+                            </span>
+                            <span class="right-button">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </span>
+
+                        </button>
+
+                        <button class="white-text text-xs" id="gmail-icon" type="button">
+                            <span class="left-button">
+                                <img src="../../assets/google-gmail-svgrepo-com.svg" alt="gmail" width="28" height="28">
+                                <span class="text-body white-text">Gmail</span>
+                            </span>
+                            <span class="right-button">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </span>
+                            
+                            
+                        </button>
+                    </div>
+
+                    <div class="history">
+                        <p class="text-outline text text-body">HISTORIAL</p>
+
+                        <div class="trail">
+                            <div class="active_icon"></div>
+                            <div class="trail-content">
+                                <span class="text-sm text-secondary">Nuevo libro registrado</span>
+                                <span class="text-sm text-outline">Hace 2 minutos</span>
+                            </div>
+
+                        </div>
+
+                        <div class="trail">
+                            <div class="unactive_icon"></div>
+                            <div class="trail-content">
+                                <span class="text-sm text-secondary">Reserva aceptada</span> 
+                                <span class="text-sm text-outline">Hace 1 hora</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            
+
+            </section>
+
+        </div>
+
+        <button class="add_button" type="button" aria-label="Añadir nuevo libro">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+
+    </main>
+
+    <div id="overlay" class="overlay">
+
+    </div>
+    
+</body>
+</html>
