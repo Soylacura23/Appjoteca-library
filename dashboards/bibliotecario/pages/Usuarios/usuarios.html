@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="/dashboards/bibliotecario/assets/css/global.css">
+    <link rel="stylesheet" href="usuarios.css">
+    <link rel="stylesheet" href="/dashboards/bibliotecario/assets/css/theme.css">
+</head>
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <!--responsive menu button-->
+            <button id="menu-activar" class="hamburguer">
+                <span class="material-symbols-outlined">Menu</span>
+            </button>
+            
+            <!--end responsive menu button-->
+
+            <div class="logo">
+                <div id="logo"></div>
+                <h1 class="headline-md text-primary">APPJOTECA</h1>
+            </div>
+
+            <div class="search-engine">
+                <form id="search-form">
+                    <button type="submit">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                    </button>
+                    <input id="search" name="query" type="search" placeholder="Busca libros, funciones o usuarios" required minlength="1">
+                </form>
+            </div>
+            
+            <div class="topbar-derecha">
+
+                <div class="notification-tray">
+                    <span class="material-symbols-outlined">notifications</span>
+                </div>
+
+                <div id="profile-button-topbar">
+
+                </div>
+
+            </div>
+        </div>
+
+        
+
+    </header>
+
+    <!-- Nav SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+        <nav class="sidebar-navigator">
+            
+            <ul class="menu-items">
+
+                <li>
+                    <a href="#" class="menu-item active">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="menu-texto">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <span class="menu-texto">Inventario</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <span class="menu-texto">Reservaciones</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="menu-texto">Usuarios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">school</span>
+                        <span class="menu-texto">Programas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <span class="menu-texto">Reportes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#porahora" class="menu-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="menu-texto">Ajustes</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- ^Main content -->
+
+    <main id="main-content" class="main-content">
+
+        <section class="header">
+
+            <h1 class="headline-xl white-text">Directorio de Usuario</h1>
+
+            <p class="text-outline text-body">Gestionando estudiantes y docentes en la biblioteca</p>
+
+        </section>
+
+        <section class="2-grid-content">
+
+            <div class="user-tables">
+                
+                <table class="user-table">
+
+                    <thead>
+                        <tr>
+
+                            <th>Perfil</th>
+                            <th>Rol</th>
+                            <th>ID Institucional</th>
+                            <th>Estado</th>
+                            <th>acciones</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Helena Rodriguez</td>
+                            <td>1186404044</td>
+                            <td>
+                                <div id="rol">
+                                    <span>Estudiante</span>
+                                </div>
+                            </td>
+                            <td>activo</td>
+                            <td class="actions">
+
+                                    <button class="btn-reject">
+                                        
+                                        <span class="material-symbols-outlined">book_4 
+                                        </span>
+                                    </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                Mostrando 1 a 3 de # usuarios
+                            </td>
+                            <td colspan="2">
+                                <button class="previous">
+                                    <span class="material-symbols-outlined">
+                                        arrow_back_ios_new
+                                    </span>
+                                </button>
+                                <button class="next">
+                                    <span class="material-symbols-outlined">
+                                        arrow_forward_ios
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+            <div class="sidebar-display">
+                
+                <div class="sidebar-display-content">
+
+                    <div class="sidebar-header">
+                        <img>
+                        <p>Profesora de Inglés Británico</p>
+                        <span>Miembro Activo</span>
+                        <span>Verificado</span>
+                    </div>
+
+                    <div class="Bio">
+                        <p>"Profesora de Inglés dedicada a la enseñanza técnica y comunicativa. Enfocada en potenciar el bilingüismo en nuestra comunidad educativa mediante metodologías activas y apoyo pedagógico continuo.</p>
+                    </div>
+
+                    <div class="phone">
+                        <span id="teléfono" aria-label="teléfono">Teléfono</span>
+                        <span id="numero" aria-label="numero">+57 (315) 4629356</span>
+                    </div>
+
+                    <div class="creation-date">
+                        <span id="created">Creado</span>
+                        <span id="date">Abril 15, 2026</span>
+                    </div>
+
+                    <p id="documento">Documento de Identidad</p>
+                    <div class="id-img">
+                        <img>
+                        <div class="document-overlay">
+                            <button class="show-up">
+                                <span class="material-symbols-outlined">
+                                    eye_tracking
+                                </span>
+                                <span>Revelar ID</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="history">
+                        <p>Historial del Usuario</p>
+                        <div class="history-space">
+                            <div class="history-card">
+                                <P>Reservó "La Odisea"</P>
+                                <p>Ayer a las 10:05 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="delete-space">
+
+                        <button class="delete">
+                            <span class="material-symbols-outlined">
+                                delete_forever
+                            </span>
+                            Eliminar Cuenta
+                        </button>
+
+                        <p>Esta acción es irreversible y eliminará toda la cuenta del usuario</p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+                
+
+
+
+        </section>
+
+
+    </main>
+
+    <!-- ^Overlay  -->
+    <div id="overlay" class="overlay">
+
+    </div>
+
+    <div class="notification-container" id="notification-container">
+
+
+    </div>
+
+    <!-- ^User options menu -->
+
+    <div class="menu-off-canva">
+        <span class="material-symbols-outlined arrow-back">arrow_back_ios</span>
+        <div id="profile-button-menu">
+            
+        </div>
+
+        <div class="menu-buttons">
+            <button class="config">
+                <span class="material-symbols-outlined">settings</span>
+                Configuración
+            </button>
+            <button class="signout">
+                <span class="material-symbols-outlined">logout</span>
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+
+
+
+    <script src="/dashboards/bibliotecario/assets/js/global.js"></script>
+
+</body>
+</html>

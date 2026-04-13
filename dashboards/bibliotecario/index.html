@@ -16,10 +16,9 @@
     <header class="topbar">
         <div class="topbar-inner">
             <!--responsive menu button-->
-            
-                <button id="menu-activar" class="hamburguer">
-                    <span class="material-symbols-outlined">Menu</span>
-                </button>
+            <button id="menu-activar" class="hamburguer">
+                <span class="material-symbols-outlined">Menu</span>
+            </button>
             
             <!--end responsive menu button-->
 
@@ -29,8 +28,12 @@
             </div>
 
             <div class="search-engine">
-                <span class="material-symbols-outlined search-icon">search</span>
-                <input id="search" type="search" placeholder="Busca libros, funciones o usuarios">
+                <form id="search-form">
+                    <button type="submit">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                    </button>
+                    <input id="search" name="query" type="search" placeholder="Busca libros, funciones o usuarios" required minlength="1">
+                </form>
             </div>
             
             <div class="topbar-derecha">
@@ -38,10 +41,11 @@
                 <div class="notification-tray">
                     <span class="material-symbols-outlined">notifications</span>
                 </div>
-                
-                <button class="profile-button" type="button">
-                    <span class="material-symbols-outlined">account_circle</span>
-                </button>
+
+                <div id="profile-button-topbar">
+
+                </div>
+
             </div>
         </div>
 
@@ -255,7 +259,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                
             </section>
 
             <section class="actions">
@@ -339,6 +343,32 @@
     <div id="overlay" class="overlay">
 
     </div>
-    
+
+    <div class="notification-container" id="notification-container">
+
+
+    </div>
+
+    <div class="menu-off-canva">
+        <span class="material-symbols-outlined arrow-back">arrow_back_ios</span>
+        <div id="profile-button-menu">
+            
+        </div>
+
+        <div class="menu-buttons">
+            <button class="config">
+                <span class="material-symbols-outlined">settings</span>
+                Configuración
+            </button>
+            <button class="signout">
+                <span class="material-symbols-outlined">logout</span>
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+
+
+
+   <script src="assets/js/global.js"></script>
 </body>
 </html>

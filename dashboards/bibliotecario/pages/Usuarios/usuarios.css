@@ -1,0 +1,8 @@
+.main-content{
+
+  margin-top: var(--topbar-height);
+  background: var(--background);
+  padding: var(--spacing-lg);
+  
+
+}
