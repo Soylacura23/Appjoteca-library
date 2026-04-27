@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/dashboards/bibliotecario/assets/css/global.css">
     <link rel="stylesheet" href="usuarios.css">
     <link rel="stylesheet" href="/dashboards/bibliotecario/assets/css/theme.css">
+    <link rel="icon" type="image/png"  href="/assets/Logo Appjoteca.png">
+<base target="_blank">
 </head>
 <body>
 
@@ -62,7 +64,7 @@
             <ul class="menu-items">
 
                 <li>
-                    <a href="#" class="menu-item active">
+                    <a href="../../index.html" class="menu-item">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="menu-texto">Dashboard</span>
                     </a>
@@ -83,7 +85,7 @@
                 </li>
 
                 <li>
-                    <a href="#porahora" class="menu-item">
+                    <a href="#" class="menu-item active">
                         <span class="material-symbols-outlined">group</span>
                         <span class="menu-texto">Usuarios</span>
                     </a>
@@ -104,7 +106,7 @@
                 </li>
 
                 <li>
-                    <a href="#porahora" class="menu-item">
+                    <a href="../Ajustes/ajustes.html" class="menu-item">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="menu-texto">Ajustes</span>
                     </a>
@@ -125,7 +127,7 @@
 
         </section>
 
-        <section class="2-grid-content">
+        <section class="two-grid-content">
 
             <div class="user-tables">
                 
@@ -144,25 +146,31 @@
 
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Helena Rodriguez</td>
-                            <td>1186404044</td>
-                            <td>
-                                <div id="rol">
+                        <tr class="user" data-user-id="1">
+                            <td data-label="Nombre">
+                                <div class="user-cell">
+                                    <img src="../../assets/images/perfil-helena.avif" alt="Helena Rodriguez" class="user-avatar">
+                                    <div class="user-info">
+                                        <span class="user-name">Helena Rodriguez</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-label="Rol">
+                                <div class="rol-badge">
                                     <span>Estudiante</span>
                                 </div>
                             </td>
-                            <td>activo</td>
-                            <td class="actions">
-
-                                    <button class="btn-reject">
-                                        
-                                        <span class="material-symbols-outlined">book_4 
-                                        </span>
-                                    </button>
-
+                            <td data-label="ID">1186404044</td>
+                            <td data-label="Estado">
+                                <span class="status-active">activo</span>
+                            </td>
+                            <td class="actions" data-label="Acciones">
+                                <button class="btn-reject">
+                                    <span class="material-symbols-outlined">book_4</span>
+                                </button>
                             </td>
                         </tr>
+        
                     </tbody>
                     <tfoot>
                         <tr>
@@ -187,12 +195,28 @@
 
             </div>
 
-            <div class="sidebar-display">
+            <div class="sidebar-display close">
+
+                <div class="question-mark">
+                    <span class="material-symbols-outlined">
+                        question_mark
+                    </span>
+                    <span>No hay nada aquí. Toca un usuario para ver su información</span>
+                </div>
                 
                 <div class="sidebar-display-content">
 
+                    <button id="goback">
+                        <span class="material-symbols-outlined">
+                            arrow_back
+                        </span>
+                    </button>
+
                     <div class="sidebar-header">
-                        <img>
+
+                        
+                        <img class="sidebar-profile-image" src="" alt="">
+                        <h1 class="headline-md text-primary">Helena Rodriguez</h1>
                         <p>Profesora de Inglés Británico</p>
                         <span>Miembro Activo</span>
                         <span>Verificado</span>
@@ -258,6 +282,25 @@
 
         </section>
 
+        <footer class="pie-pagina">
+        <div class="pie-superior">
+            <div class="logo-pie">APPJOTECA</div>
+    
+            <nav class="enlaces-legales">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+                <a href="#">Acceso Institucional</a>
+                <a href="#">Soporte</a>
+            </nav>
+        </div>
+    
+        <div class="pie-inferior">
+            <div class="copyright">
+                © 2024 APPJOTECA. TODOS LOS DERECHOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+
 
     </main>
 
@@ -294,6 +337,7 @@
 
 
     <script src="/dashboards/bibliotecario/assets/js/global.js"></script>
+    <script src="usuarios.js"></script>
 
 </body>
 </html>

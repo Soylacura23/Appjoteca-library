@@ -69,6 +69,12 @@ goBackButton.addEventListener('click', ()=>{
     document.body.style.overflow = '';
 })
 
+const configBtn = document.querySelector('.config');
+configBtn.addEventListener('click', () =>{
+    window.location.href = "/dashboards/bibliotecario/pages/Ajustes/ajustes.html";
+
+});
+
 
 
 
