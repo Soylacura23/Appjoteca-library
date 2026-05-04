@@ -75,6 +75,11 @@ configBtn.addEventListener('click', () =>{
 
 });
 
+const signOut = document.querySelector('.signout');
+signOut.addEventListener('click', () => {
+    window.location.href = "/index.html"
+})
+
 
 
 

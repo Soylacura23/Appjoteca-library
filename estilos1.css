@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0b0b0b;
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 50px;
+  background:#121212;
+}
+
+.logo {
+  font-size:24px;
+  font-weight:bold;
+  color: #daa520;
+}
+
+nav ul {
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav ul li a {
+  text-decoration:none;
+  color:white;
+}
+
+nav ul li a:hover {
+  color:#daa520;
+}
+
+.btn {
+  padding:8px 15px;
+  background:#daa520;
+  border:none;
+  border-radius:5px;
+  color:white;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero {
+  padding: 120px 60px 60px;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hero-title span {
+  color: #d4af37;
+}
+
+.hero-description {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 15px 30px;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.hero-button:hover {
+  background: #d4af37;
+  color: black;
+}
+
+/* COLLECTION */
+.collection {
+  padding: 80px 60px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 32px;
+}
+
+.header p {
+  font-size: 12px;
+  color: #d4af37;
+  letter-spacing: 2px;
+}
+
+.view-all {
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+.tag {
+  font-size: 10px;
+  color: #d4af37;
+}
+
+.overlay h2 {
+  font-size: 16px;
+}
+
+/* HOVER */
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+}
