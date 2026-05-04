@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'arial', sans-serif;
+}
+
+body {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cajaprin {
+    width: 1250px;
+    height: 670px;
+    background-color: #121212;
+    border-radius: 20px;
+    position: relative;
+    align-items: center;
+}
+
+.cajai {
+    width: 625px;
+    height: 100px;
+    position: relative;
+    display: inline-block;
+}
+
+.img1 {
+    width: 100%;
+    height: 650px;
+    border-radius: 30px;
+    position: absolute;
+    margin-top:10px;
+    left: 0;
+    z-index: 1;
+}
+
+.titulo {
+    position: absolute;
+    top: 260px;
+    left: 170px;
+    color: #ffffff;
+    font-size: 2.5em;
+    font-weight: bold;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin: 0;
+    
+}
+
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,255,255,0.3);
+    width: 320px;
+    text-align: center;
+    margin-left: 800px; /* Ajustado */
+    position: relative;
+    z-index: 10; /* Asegurar que esté encima */
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.cajaform {
+    position: relative;
+    margin: 20px 0;
+}
+
+.cajaform input {
+    width: 100%;
+    padding: 12px 15px 12px 15px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    transition: 0.4s;
+}
+
+.cajaform input:focus {
+    border-color: #00ffff;
+    box-shadow: 0 5px 15px rgba(0,255,255,0.3);
+}
+
+.cajaform span {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.4s;
+    transform: translateY(-50%);
+}
+
+/* CORREGIDO: span DESPUÉS del input, usar ~ en lugar de + */
+.cajaform input:focus ~ span,
+.cajaform input:valid ~ span {
+    top: 5px;
+    font-size: 12px;
+    color: #00ffff;
+}
+
+.undir {
+    background: linear-gradient(90deg, #00ffff, #00ff80);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    color: #000;
+    font-weight: bold;
+    transition: 0.4s;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.undir:hover {
+    background: linear-gradient(90deg, #00ff80, #00ffff);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+}
