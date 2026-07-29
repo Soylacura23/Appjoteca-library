@@ -1,0 +1,371 @@
+/* ================================================================
+   theme.css — Variables Globales, Reset & Componentes Base
+   AppJoteca v2.0
+
+   Importar PRIMERO en todas las páginas de la biblioteca.
+   Contiene: custom properties, reset, overlay, botón de perfil,
+             menú off-canvas de perfil y scrollbar.
+   ================================================================ */
+
+/* ────────────────────────────────────────────────
+   Custom Properties (Design Tokens)
+   ──────────────────────────────────────────────── */
+   :root {
+    /* ── Paleta ── */
+    --background:                 #000000;
+    --surface-container-low:      #080808;
+    --surface-container:          #0d0d0d;
+    --surface-container-high:     #121212;
+    --surface-container-highest:  #1c1c1c;
+    --surface-bright:             #252525;
+
+    --primary:                    #f2ca50;
+    --primary-container:          #d4af37;
+    --primary-fixed:              #ffe088;
+    --on-primary:                 #3c2f00;
+    --on-primary-fixed:           #241a00;
+
+    --secondary:                  #c9c6c5;
+    --secondary-container:        #474646;
+    --on-secondary:               #313030;
+
+    --tertiary:                   #bfcdff;
+    --tertiary-container:         #97b0ff;
+    --on-tertiary:                #082b72;
+
+    --error:                      #ffb4ab;
+    --error-container:            #93000a;
+
+    --outline:                    #99907c;
+    --outline-variant:            #4d4635;
+
+    --on-surface:                 #e2e2e2;
+    --on-surface-variant:         #d0c5af;
+
+    /* ── Tipografía ── */
+    --font-headline:  "Noto Serif", Georgia, serif;
+    --font-body:      "Manrope", system-ui, sans-serif;
+
+    /* ── Radios ── */
+    --radius-xs:   4px;
+    --radius-sm:   8px;
+    --radius-md:   14px;
+    --radius-lg:   20px;
+    --radius-xl:   28px;
+    --radius-full: 100px;
+
+    /* ── Espaciado ── */
+    --sp-xs:  8px;
+    --sp-sm:  16px;
+    --sp-md:  24px;
+    --sp-lg:  36px;
+    --sp-xl:  52px;
+    --sp-2xl: 72px;
+
+    /* ── Padding horizontal de página ── */
+    --px: 16px;
+
+    /* ── Altura de la topbar ── */
+    --topbar-h: 62px;
+
+    /* ── Z-index ── */
+    --z-fab:          500;
+    --z-topbar:       1000;
+    --z-mobile-overlay: 1100;
+    --z-mobile-menu:  1200;
+    --z-overlay:      1250;
+    --z-profile-menu: 1300;
+    --z-notif:        1350;
+
+    /* ── Transiciones ── */
+    --ease-fast: 0.2s ease;
+    --ease-med:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-slow: 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (min-width: 600px) {
+    :root { --px: 24px; --topbar-h: 68px; }
+}
+@media (min-width: 900px) {
+    :root { --px: 48px; --topbar-h: 76px; }
+}
+@media (min-width: 1200px) {
+    :root { --px: 64px; --topbar-h: 80px; }
+}
+
+
+/* ────────────────────────────────────────────────
+   Reset & Base
+   ──────────────────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    font-family: var(--font-body);
+    color: var(--on-surface);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* ────────────────────────────────────────────────
+   Overlay Global (perfil + notificaciones)
+   ──────────────────────────────────────────────── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--ease-med);
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* ────────────────────────────────────────────────
+   Botón de Perfil
+   ──────────────────────────────────────────────── */
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(242, 202, 80, 0.3);
+    background: var(--surface-container-highest);
+    flex-shrink: 0;
+    transition:
+        border-color var(--ease-fast),
+        box-shadow var(--ease-fast),
+        transform 0.15s ease;
+}
+
+.profile-button:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(242, 202, 80, 0.12);
+}
+
+.profile-button:active {
+    transform: scale(0.92);
+}
+
+.profile-button.btn-md {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+}
+
+.profile-button.btn-lg {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    border-width: 3px;
+}
+
+.img-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ────────────────────────────────────────────────
+   Menú Off-Canvas de Perfil
+   ──────────────────────────────────────────────── */
+.menu-off-canva {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-profile-menu);
+    width: 100%;
+    max-width: 320px;
+    background: #060606;
+    border-left: 1px solid rgba(242, 202, 80, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 28px 44px;
+    gap: 28px;
+    transform: translateX(110%);
+    transition: transform var(--ease-slow);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-off-canva.open {
+    transform: translateX(0);
+}
+
+/* ── Botón volver ── */
+.arrow-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color var(--ease-fast), background var(--ease-fast);
+}
+
+.arrow-back:hover {
+    color: var(--primary);
+    background: rgba(242, 202, 80, 0.08);
+}
+
+/* ── Área de imagen de perfil ── */
+#profile-button-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.menu-profile-name {
+    font-family: var(--font-headline);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #e2e2e2;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+.menu-profile-role {
+    font-family: var(--font-body);
+    font-size: 0.5875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-align: center;
+    margin-top: -8px;
+}
+
+/* ── Divisor del menú ── */
+.menu-off-canva-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+/* ── Botones de acciones ── */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.menu-buttons button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    text-align: left;
+    transition:
+        color var(--ease-fast),
+        background var(--ease-fast),
+        border-color var(--ease-fast),
+        transform 0.15s ease;
+}
+
+.menu-buttons button:active {
+    transform: scale(0.98);
+}
+
+.menu-buttons button.config:hover {
+    color: var(--primary);
+    background: rgba(242, 202, 80, 0.06);
+    border-color: rgba(242, 202, 80, 0.18);
+}
+
+.menu-buttons button.signout:hover {
+    color: #ffb4ab;
+    background: rgba(255, 180, 171, 0.05);
+    border-color: rgba(255, 180, 171, 0.18);
+}
+
+.menu-buttons button .material-symbols-outlined {
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.menu-buttons button.config:hover .material-symbols-outlined,
+.menu-buttons button.signout:hover .material-symbols-outlined {
+    opacity: 1;
+}
+
+
+/* ────────────────────────────────────────────────
+   Scrollbar personalizado
+   ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb {
+    background: var(--surface-container-highest);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--outline-variant); }

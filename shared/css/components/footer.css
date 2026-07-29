@@ -1,0 +1,209 @@
+.footer {
+  background: var(--surface-container-low, #0c0c0c);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Esquinas redondeadas solo en la parte superior */
+  border-radius: 24px 24px 0 0;
+  margin-top: auto;
+  /* Para que el footer se quede al final en páginas cortas */
+  position: relative;
+  z-index: 10;
+}
+
+/* Fondo decorativo sutil */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(242, 202, 80, 0.15) 25%, 
+    rgba(242, 202, 80, 0.3) 50%, 
+    rgba(242, 202, 80, 0.15) 75%, 
+    transparent 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+/* ── Contenedor interno centrado ──────────────────────── */
+.footer-inner {
+  padding: 56px 24px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── Marca ────────────────────────────────────────────── */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-logo {
+  font-family: var(--font-headline, "Noto Serif", serif);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--primary, #f2ca50);
+  letter-spacing: -0.01em;
+}
+
+.footer-tagline {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 340px;
+}
+
+/* ── Social ───────────────────────────────────────────── */
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.footer-social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+  background: none;
+}
+
+.footer-social-btn:hover {
+  border-color: rgba(242, 202, 80, 0.45);
+  color: var(--primary, #f2ca50);
+  background: rgba(242, 202, 80, 0.07);
+}
+
+.footer-social-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* ── Columnas de navegación ───────────────────────────── */
+.footer-nav-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px 24px;
+}
+
+.footer-col-title {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--primary, #f2ca50);
+  margin-bottom: 14px;
+}
+
+.footer-col nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col nav a {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.25s ease;
+  display: inline-block;
+}
+
+.footer-col nav a:hover {
+  color: #e2e2e2;
+}
+
+/* ── Franja inferior ──────────────────────────────────── */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 24px 24px;
+}
+
+.footer-copyright {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.5625rem;
+  color: rgba(255, 255, 255, 0.18);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  text-align: center;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+/* Tablet pequeña (≥520px): más aire */
+@media (min-width: 520px) {
+  .footer-inner { padding: 56px 32px 44px; }
+  .footer-bottom { padding: 20px 32px; }
+  .footer-nav-cols { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet (≥768px) */
+@media (min-width: 768px) {
+  .footer-inner { padding: 64px 48px 52px; }
+  .footer-bottom { padding: 22px 48px; }
+}
+
+/* Desktop (≥900px): layout horizontal */
+@media (min-width: 900px) {
+  .footer-inner {
+    padding: 72px 64px 60px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 72px;
+  }
+  .footer-brand {
+    flex-shrink: 0;
+    max-width: 300px;
+  }
+  .footer-nav-cols {
+    flex: 1;
+    align-self: flex-start;
+  }
+  .footer-bottom {
+    padding: 22px 64px;
+  }
+}
+
+/* Desktop grande (≥1200px) */
+@media (min-width: 1200px) {
+  .footer-inner {
+    padding: 80px 80px 64px;
+    gap: 96px;
+  }
+  .footer-brand { max-width: 320px; }
+  .footer-bottom { padding: 24px 80px; }
+}
+
+/* XL (≥1440px): centrado máximo */
+@media (min-width: 1440px) {
+  .footer-inner {
+    padding: 80px 96px 64px;
+  }
+  .footer-bottom { padding: 24px 96px; }
+}
+
+/* Reducir motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-social-btn,
+  .footer-col nav a {
+    transition: none;
+  }
+}

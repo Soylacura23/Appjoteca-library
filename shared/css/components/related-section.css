@@ -1,0 +1,121 @@
+/* ================================================================
+   related-section.css — Componente: Libros Relacionados
+   AppJoteca v2.0
+
+   Requiere: theme.css, book-card.css (estilos de .book-card)
+   ================================================================ */
+
+/* ────────────────────────────────────────────────
+   Sección contenedora
+   ──────────────────────────────────────────────── */
+   .related-section {
+    margin-top: var(--sp-2xl, 64px);
+    padding-top: var(--sp-2xl, 64px);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ── Header ── */
+.related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--sp-xl, 32px);
+    padding-bottom: var(--sp-md, 16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: var(--sp-md, 16px);
+    flex-wrap: wrap;
+}
+
+.related-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.related-title {
+    font-family: var(--font-headline, "Noto Serif", serif);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #e2e2e2;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.related-subtitle {
+    font-family: var(--font-body, "Manrope", sans-serif);
+    font-size: 0.75rem;
+    color: var(--outline, rgba(255,255,255,0.35));
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.related-view-all {
+    font-family: var(--font-body, "Manrope", sans-serif);
+    font-size: 0.5875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--primary, #f2ca50);
+    opacity: 0.8;
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: opacity var(--ease-fast, 0.2s ease);
+    flex-shrink: 0;
+}
+
+.related-view-all:hover {
+    opacity: 1;
+}
+
+/* ── Grid de relacionados ── */
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 14px;
+}
+
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+
+/* Tablet 600px+ */
+@media (min-width: 600px) {
+    .related-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px 20px;
+    }
+}
+
+/* Desktop 900px+ */
+@media (min-width: 900px) {
+    .related-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 36px 20px;
+    }
+
+    .catalogo-inner {
+        padding: var(--sp-xl, 32px) var(--px, 36px) 80px;
+    }
+
+    .back-btn {
+        margin-bottom: var(--sp-2xl, 64px);
+    }
+}
+
+/* Wide 1200px+ */
+@media (min-width: 1200px) {
+    .related-grid {
+        gap: 40px 24px;
+    }
+}
+
+/* XS max 399px */
+@media (max-width: 399px) {
+    .related-grid {
+        gap: 18px 8px;
+    }
+}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | Appjoteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="/dashboards/bibliotecario/css/global.css">
+    <link rel="stylesheet" href="/shared/css/components/notifications.css">
+    <link rel="stylesheet" href="/dashboards/bibliotecario/css/theme.css">
+    <link rel="stylesheet" href="/shared/css/components/footer.css">
+    <link rel="stylesheet" href="reportes.css">
+    <link rel="icon" type="image/png" href="/shared/images/logo-appjoteca.png">
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <button id="menu-activar" class="hamburguer">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="logo">
+                <div id="logo"></div>
+                <h1 class="headline-md text-primary">APPJOTECA</h1>
+            </div>
+            <div class="search-engine">
+                <form id="search-form">
+                    <button type="submit">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                    </button>
+                    <input id="search" name="query" type="search" placeholder="Busca libros, funciones o usuarios" required minlength="1">
+                </form>
+            </div>
+            <div class="topbar-derecha">
+                <button class="icon-btn search-toggle-btn" id="search-toggle-btn" aria-label="Buscar" aria-expanded="false">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <button class="notification-tray" id="notification-tray-btn" aria-label="Notificaciones" aria-expanded="false">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-badge hidden" aria-hidden="true"></span>
+                </button>
+                <div id="profile-button-topbar"></div>
+            </div>
+        </div>
+        <div class="topbar-search-mobile" id="topbar-search-mobile" aria-hidden="true">
+            <input type="text" placeholder="Buscar libros, funciones o usuarios..." aria-label="Buscar en reportes">
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <nav class="sidebar-navigator">
+            <ul class="menu-items">
+                <li>
+                    <a href="/dashboards/bibliotecario/index.html" class="menu-item">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="menu-texto">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/inventario/inventario.html" class="menu-item">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <span class="menu-texto">Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/reservaciones/reservaciones.html" class="menu-item">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <span class="menu-texto">Reservaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/usuarios/usuarios.html" class="menu-item">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="menu-texto">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/programas/programas.html" class="menu-item">
+                        <span class="material-symbols-outlined">school</span>
+                        <span class="menu-texto">Programas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/reportes/reportes.html" class="menu-item active">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <span class="menu-texto">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboards/bibliotecario/pages/ajustes/index.html" class="menu-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="menu-texto">Ajustes</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+
+        <!-- Header -->
+        <section class="header">
+            <div class="header-text">
+                <p class="label-overline text-primary">Análisis Institucional</p>
+                <h1 class="headline-xl white-text">Reportes del Bibliotecario</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn-outline">Descargar PDF</button>
+                <button class="btn-primary">Generar informe descargable</button>
+            </div>
+        </section>
+
+        <!-- Métricas Principales -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon-bg">
+                    <span class="material-symbols-outlined">show_chart</span>
+                </div>
+                <div class="metric-body">
+                    <p class="metric-label">Tráfico Total</p>
+                    <h2 class="metric-value">12,842</h2>
+                    <p class="metric-trend up">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                        14% vs mes anterior
+                    </p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon-bg">
+                    <span class="material-symbols-outlined">event_available</span>
+                </div>
+                <div class="metric-body">
+                    <p class="metric-label">Reservas Diarias</p>
+                    <h2 class="metric-value">30</h2>
+                    <p class="metric-trend up">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        Tendencia al alza
+                    </p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon-bg">
+                    <span class="material-symbols-outlined">group</span>
+                </div>
+                <div class="metric-body">
+                    <p class="metric-label">Usuarios Activos</p>
+                    <h2 class="metric-value">10</h2>
+                    <p class="metric-trend neutral">Acceso Institucional</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráfico + Insights -->
+        <section class="analytics-grid">
+            <!-- Gráfico de Barras -->
+            <div class="chart-panel">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="headline-sm white-text">Frecuencia de Reservas</h3>
+                        <p class="text-outline text-body-sm">Volumen de adquisiciones del trimestre</p>
+                    </div>
+                    <span class="badge-live">En vivo</span>
+                </div>
+                <div class="chart-area">
+                    <div class="chart-bars" id="chart-bars">
+                        <!-- Barras generadas por JS -->
+                    </div>
+                    <div class="chart-gridlines">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+                <div class="chart-labels">
+                    <span>Lunes</span><span>Martes</span><span>Miércoles</span>
+                    <span>Jueves</span><span>Viernes</span><span>Sábado</span><span>Domingo</span>
+                </div>
+            </div>
+
+            <!-- Panel Derecho: Peak Hours + Categoría -->
+            <div class="insights-panel">
+                <div class="peak-hours">
+                    <h3 class="headline-sm white-text">Densidad Horaria</h3>
+                    <div class="peak-item">
+                        <div class="peak-info">
+                            <span class="peak-time">10:00 AM — 12:00 PM</span>
+                            <span class="peak-load">92% Carga</span>
+                        </div>
+                        <div class="peak-bar-bg">
+                            <div class="peak-bar-fill" style="width:92%"></div>
+                        </div>
+                    </div>
+                    <div class="peak-item">
+                        <div class="peak-info">
+                            <span class="peak-time">02:00 PM — 04:00 PM</span>
+                            <span class="peak-load">78% Carga</span>
+                        </div>
+                        <div class="peak-bar-bg">
+                            <div class="peak-bar-fill" style="width:78%"></div>
+                        </div>
+                    </div>
+                    <div class="peak-item">
+                        <div class="peak-info">
+                            <span class="peak-time">04:00 PM — 06:00 PM</span>
+                            <span class="peak-load">65% Carga</span>
+                        </div>
+                        <div class="peak-bar-bg">
+                            <div class="peak-bar-fill" style="width:65%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-category">
+                    <div class="category-header">
+                        <span class="material-symbols-outlined">star</span>
+                        <h3 class="headline-sm">Categoría Popular</h3>
+                    </div>
+                    <p class="category-name">El mundo de Sofía</p>
+                    <p class="category-desc">Domina el 24% de los préstamos esta semana</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alertas de Inventario -->
+        <section class="alerts-section">
+            <div class="alerts-header">
+                <h3 class="headline-md white-text">Alertas Críticas de Inventario</h3>
+                <div class="divider-line"></div>
+                <span class="alert-count">
+                    <span class="alert-dot"></span>
+                    12 Ítems Marcados
+                </span>
+            </div>
+            <div class="alerts-grid">
+                <div class="alert-card">
+                    <div class="alert-thumb">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&h=300&fit=crop" alt="El Secreto del Alquimista">
+                    </div>
+                    <div class="alert-body">
+                        <h4 class="alert-title">El Secreto del Alquimista</h4>
+                        <p class="alert-id">ID: ACQ-772910</p>
+                        <span class="alert-badge error">En restauración</span>
+                        <p class="alert-meta">Retorno estimado: 24 Oct, 2026</p>
+                    </div>
+                </div>
+                <div class="alert-card">
+                    <div class="alert-thumb">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=300&fit=crop" alt="Lógica Cuántica">
+                    </div>
+                    <div class="alert-body">
+                        <h4 class="alert-title">Lógica Cuántica</h4>
+                        <p class="alert-id">ID: PHY-110245</p>
+                        <span class="alert-badge warning">Máx. Préstamos</span>
+                        <p class="alert-meta">0 de 12 copias disponibles</p>
+                    </div>
+                </div>
+                <div class="alert-card">
+                    <div class="alert-thumb">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=200&h=300&fit=crop" alt="La Proporción Áurea">
+                    </div>
+                    <div class="alert-body">
+                        <h4 class="alert-title">La Proporción Áurea</h4>
+                        <p class="alert-id">ID: ART-900331</p>
+                        <span class="alert-badge error">Copia Dañada</span>
+                        <p class="alert-meta">En encuadernación</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Predictivo -->
+        <section class="forecast-banner">
+            <div class="forecast-bg"></div>
+            <div class="forecast-content">
+                <p class="label-overline text-primary">Visión del Bibliotecario</p>
+                <h3 class="headline-lg white-text">Pronóstico: Inventario Impulsado por IA</h3>
+                <p class="text-body text-outline">Nuestros algoritmos de próxima generación predicen un aumento del 40% en la demanda de literatura clásica el próximo mes. Prepara las estanterías para nuevos préstamos.</p>
+                <a href="#" class="forecast-link">
+                    Explorar Tendencias
+                    <span class="material-symbols-outlined">trending_flat</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+          <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">AppJoteca</span>
+        <p class="footer-tagline">
+          Punto de acceso institucional para fomentar la lectura en los estudiantes de la institución.
+        </p>
+        <div class="footer-social">
+          <button class="footer-social-btn" aria-label="Sitio web">
+            <span class="material-symbols-outlined">language</span>
+          </button>
+          <button class="footer-social-btn" aria-label="Compartir">
+            <span class="material-symbols-outlined">share</span>
+          </button>
+          <button class="footer-social-btn" aria-label="Correo electrónico">
+            <span class="material-symbols-outlined">mail</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-nav-cols">
+        <div class="footer-col">
+          <p class="footer-col-title">Explorar</p>
+          <nav>
+            <a href="#">El Catálogo</a>
+            <a href="#">Nuevos Ingresos</a>
+            <a href="#">Mi Biblioteca</a>
+            <a href="#">Mapa Institucional</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Sistema</p>
+          <nav>
+            <a href="#">Términos de Uso</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Soporte</a>
+            <a href="#">Accesibilidad</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Acceso</p>
+          <nav>
+            <a href="#">Acceso Institucional</a>
+            <a href="#">Panel Administrativo</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2024 AppJoteca &nbsp;·&nbsp; Sistema de Biblioteca Institucional
+      </p>
+    </div>
+  </footer>
+    </main>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Notificaciones -->
+    <div class="notification-container" id="notification-container">
+        <div class="notification-header">
+            <h3 class="notification-header-title">
+                Notificaciones
+                <span class="count-pill">0</span>
+            </h3>
+            <button class="notification-mark-all" id="mark-all-read">Marcar leídas</button>
+        </div>
+        <div class="notification-list" id="notification-list">
+            <div class="notification-empty" id="notification-empty">
+                <span class="material-symbols-outlined">notifications_none</span>
+                <p>No hay notificaciones nuevas</p>
+            </div>
+        </div>
+        <div class="notification-footer">
+            <button class="notification-see-all">Ver todas las notificaciones</button>
+        </div>
+    </div>
+
+    <!-- Menú Off-canvas -->
+    <div class="menu-off-canva">
+        <span class="material-symbols-outlined arrow-back">arrow_back_ios</span>
+        <div id="profile-button-menu"></div>
+        <div class="menu-buttons">
+            <button class="config">
+                <span class="material-symbols-outlined">settings</span>
+                Configuración
+            </button>
+            <button class="signout">
+                <span class="material-symbols-outlined">logout</span>
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+
+    <script src="/dashboards/bibliotecario/js/global.js"></script>
+    <script src="reportes.js"></script>
+</body>
+</html>

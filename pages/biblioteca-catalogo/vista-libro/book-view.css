@@ -1,0 +1,578 @@
+/* ================================================================
+   catalogo.css — Página de Detalle de Libro
+   AppJoteca v2.0
+
+   Requiere: theme.css, navbar.css, notifications.css,
+             book-card.css (para la sección de relacionados)
+   ================================================================ */
+
+
+/* ────────────────────────────────────────────────
+   Layout principal
+   ──────────────────────────────────────────────── */
+   .catalogo-main {
+    padding-top: var(--topbar-h);
+    min-height: 100vh;
+}
+
+.catalogo-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--sp-xl) var(--px) var(--sp-2xl);
+}
+
+
+/* ────────────────────────────────────────────────
+   Breadcrumb / Botón volver
+   ──────────────────────────────────────────────── */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--outline);
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: var(--sp-xl);
+    transition: color var(--ease-fast);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.back-btn .material-symbols-outlined {
+    font-size: 18px;
+    transition: transform var(--ease-fast);
+}
+
+.back-btn:hover {
+    color: var(--primary);
+}
+
+.back-btn:hover .material-symbols-outlined {
+    transform: translateX(-4px);
+}
+
+
+/* ────────────────────────────────────────────────
+   Hero del libro — cuadrícula principal
+   ──────────────────────────────────────────────── */
+.book-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-xl);
+    align-items: start;
+    margin-bottom: var(--sp-2xl);
+}
+
+/* ── Columna portada ── */
+.book-cover-col {
+    position: relative;
+}
+
+/* Aura de fondo */
+.book-cover-glow {
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(242, 202, 80, 0.14) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    z-index: 0;
+}
+
+.book-cover-col:hover .book-cover-glow {
+    opacity: 1.5;
+}
+
+.book-cover-frame {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow:
+        0 24px 48px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+    aspect-ratio: 2 / 3;
+    background: var(--surface-container-highest);
+    transition: box-shadow 0.5s ease;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.book-cover-frame:hover {
+    box-shadow:
+        0 50px 90px rgba(0, 0, 0, 0.95),
+        0 0 0 1px rgba(242, 202, 80, 0.18),
+        0 0 50px rgba(242, 202, 80, 0.07);
+}
+
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.book-cover-frame:hover .book-cover-img {
+    transform: scale(1.04);
+}
+
+/* ── Columna detalles ── */
+.book-details-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+}
+
+/* ── Fila de estado y edición ── */
+.book-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Badge de disponibilidad */
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 0.5625rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+.availability-badge.available {
+    background: rgba(191, 205, 255, 0.1);
+    color: var(--tertiary);
+    border: 1px solid rgba(191, 205, 255, 0.2);
+}
+
+.availability-badge.available::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.availability-badge.unavailable {
+    background: rgba(255, 180, 171, 0.08);
+    color: var(--error);
+    border: 1px solid rgba(255, 180, 171, 0.18);
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.book-edition-label {
+    font-family: var(--font-body);
+    font-size: 0.5875rem;
+    font-weight: 500;
+    color: var(--outline);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* ── Título y autor ── */
+.book-title-main {
+    font-family: var(--font-headline);
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: #e8e8e8;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+}
+
+.book-author-main {
+    font-family: var(--font-headline);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    margin-top: -8px;
+}
+
+
+/* ────────────────────────────────────────────────
+   Metadatos — bento grid
+   ──────────────────────────────────────────────── */
+.book-metadata {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
+    padding: var(--sp-lg) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meta-label {
+    font-family: var(--font-body);
+    font-size: 0.5375rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--outline);
+}
+
+.meta-value {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--on-surface);
+}
+
+/* Rating especial */
+.meta-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+}
+
+.meta-rating .material-symbols-outlined {
+    font-size: 16px;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+.meta-rating-score {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+}
+
+
+/* ────────────────────────────────────────────────
+   Sinopsis
+   ──────────────────────────────────────────────── */
+.synopsis-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+}
+
+.synopsis-title {
+    font-family: var(--font-headline);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #e2e2e2;
+    letter-spacing: -0.01em;
+}
+
+.synopsis-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--on-surface-variant);
+    line-height: 1.78;
+    font-weight: 400;
+    max-width: 640px;
+}
+
+
+/* ────────────────────────────────────────────────
+   Tags del libro
+   ──────────────────────────────────────────────── */
+.book-tags-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.book-tag-detail {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color var(--ease-fast), border-color var(--ease-fast), background var(--ease-fast);
+    cursor: pointer;
+}
+
+.book-tag-detail:hover {
+    color: var(--primary);
+    border-color: rgba(242, 202, 80, 0.22);
+    background: rgba(242, 202, 80, 0.04);
+}
+
+
+/* ────────────────────────────────────────────────
+   Botones de acción
+   ──────────────────────────────────────────────── */
+.book-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding-top: var(--sp-xs);
+}
+
+.btn-reservar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 36px;
+    background: linear-gradient(45deg, var(--primary), var(--primary-container));
+    color: var(--on-primary-fixed);
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    box-shadow:
+        0 8px 28px rgba(242, 202, 80, 0.25),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    transition:
+        transform var(--ease-fast),
+        box-shadow var(--ease-fast);
+}
+
+.btn-reservar:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 36px rgba(242, 202, 80, 0.38),
+        0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.btn-reservar:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-add-library {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 24px;
+    background: transparent;
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition:
+        color var(--ease-fast),
+        border-color var(--ease-fast),
+        background var(--ease-fast),
+        transform 0.15s ease;
+}
+
+.btn-add-library .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.btn-add-library:hover {
+    color: var(--primary);
+    border-color: rgba(242, 202, 80, 0.3);
+    background: rgba(242, 202, 80, 0.04);
+}
+
+.btn-add-library:active {
+    transform: scale(0.97);
+}
+
+
+/* ────────────────────────────────────────────────
+   Sección: Libros relacionados
+   ──────────────────────────────────────────────── */
+.related-section {
+    margin-top: var(--sp-2xl);
+    padding-top: var(--sp-2xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--sp-xl);
+    padding-bottom: var(--sp-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: var(--sp-md);
+    flex-wrap: wrap;
+}
+
+.related-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.related-title {
+    font-family: var(--font-headline);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #e2e2e2;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.related-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--outline);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.related-view-all {
+    font-family: var(--font-body);
+    font-size: 0.5875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--primary);
+    opacity: 0.8;
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: opacity var(--ease-fast);
+    flex-shrink: 0;
+}
+
+.related-view-all:hover {
+    opacity: 1;
+}
+
+/* ── Grid de relacionados — reutiliza .book-card ── */
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 14px;
+}
+
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+
+/* Tablet 600px+ */
+@media (min-width: 600px) {
+    .book-hero {
+        gap: var(--sp-2xl);
+    }
+
+    .book-cover-frame {
+        max-width: 300px;
+    }
+
+    .book-metadata {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px 20px;
+    }
+}
+
+    .book-title-main {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+    }
+
+
+/* Desktop 900px+ */
+@media (min-width: 900px) {
+    .book-hero {
+        grid-template-columns: 5fr 7fr;
+        gap: 60px;
+        margin-bottom: 100px;
+    }
+
+    .book-cover-frame {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 36px 20px;
+    }
+
+    .synopsis-text {
+        font-size: 1.0625rem;
+    }
+
+    .catalogo-inner {
+        padding: var(--sp-xl) var(--px) 80px;
+    }
+
+    .back-btn {
+        margin-bottom: var(--sp-2xl);
+    }
+}
+
+/* Wide 1200px+ */
+@media (min-width: 1200px) {
+    .book-hero {
+        gap: 80px;
+    }
+
+    .related-grid {
+        gap: 40px 24px;
+    }
+}
+
+/* XS max 399px */
+@media (max-width: 399px) {
+    .catalogo-inner {
+        padding: var(--sp-lg) var(--px) var(--sp-2xl);
+    }
+
+    .back-btn {
+        margin-bottom: var(--sp-lg);
+    }
+
+    .book-title-main {
+        font-size: 2rem;
+    }
+
+    .btn-reservar {
+        padding: 14px 28px;
+        font-size: 0.625rem;
+    }
+
+    .related-grid {
+        gap: 18px 8px;
+    }
+
+    .book-metadata {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 12px;
+    }
+}
