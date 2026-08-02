@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,16 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 
   <!-- Estilos compartidos -->
-  <link rel="stylesheet" href="/shared/css/theme.css">
-  <link rel="stylesheet" href="/shared/css/components/notifications.css">
-  <link rel="stylesheet" href="/shared/css/components/navbar.css">
-  <link rel="stylesheet" href="/shared/css/components/footer.css">
-  <link rel="stylesheet" href="/shared/css/components/book-card.css">
-  <link rel="stylesheet" href="/shared/css/components/related-section.css">
+  <link rel="stylesheet" href="../../../shared/css/theme.css">
+  <link rel="stylesheet" href="../../../shared/css/components/notifications.css">
+  <link rel="stylesheet" href="../../../shared/css/components/navbar.css">
+  <link rel="stylesheet" href="../../../shared/css/components/footer.css">
+  <link rel="stylesheet" href="../../../shared/css/components/book-card.css">
+  <link rel="stylesheet" href="../../../shared/css/components/related-section.css">
 
   <!-- Estilo propio -->
   <link rel="stylesheet" href="reservacion.css">
-<base target="_blank">
+<base target="_self">
 </head>
 <body>
 
@@ -130,7 +131,7 @@
       </div>
 
       <nav class="topbar-nav" aria-label="Navegación principal">
-        <a href="/pages/biblioteca-digital/index.html" class="nav-link" data-nav="catalogo">Catálogo</a>
+        <a href="../../biblioteca-digital/index.php" class="nav-link" data-nav="catalogo">Catálogo</a>
         <a href="#" class="nav-link" data-nav="biblioteca">Mi Biblioteca</a>
         <a href="#" class="nav-link" data-nav="panel">Panel</a>
       </nav>
@@ -171,7 +172,7 @@
       </button>
     </div>
     <nav class="mobile-menu-nav" aria-label="Navegación">
-      <a href="/pages/biblioteca-digital/index.html" class="mobile-nav-link" data-nav="catalogo">Catálogo</a>
+      <a href="../../biblioteca-digital/index.php" class="mobile-nav-link" data-nav="catalogo">Catálogo</a>
       <a href="#" class="mobile-nav-link" data-nav="biblioteca">Mi Biblioteca</a>
       <a href="#" class="mobile-nav-link" data-nav="panel">Panel</a>
     </nav>
@@ -240,7 +241,7 @@
         <aside class="book-aside" aria-label="Información del libro">
           <div class="aside-cover-wrap">
             <img
-              src="/assets/images/books/cien-años-de-soledad.jpg"
+              src="../../../assets/images/books/cien-años-de-soledad.jpg"
               alt="Cien años de Soledad"
               class="aside-cover"
               loading="eager"
@@ -493,8 +494,8 @@
 
 
   <!-- Scripts compartidos -->
-  <script src="/shared/js/components/navbar.js"></script>
-  <script src="/shared/js/global.js"></script>
+  <script src="../../../shared/js/components/navbar.js"></script>
+  <script src="../../../shared/js/global.js"></script>
 
   <!-- Script propio -->
   <script src="reservacion.js"></script>

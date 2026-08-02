@@ -4,23 +4,26 @@
    ============================================================ */
 
 // ── Credenciales por rol ────────────────────────────────────
+
 const CREDENCIALES = {
   estudiante: {
     usuario: 'estudiante',
     contrasena: 'est123',
-    destino: '/dashboards/estudiante/index.html'
+    destino: '../../dashboards/estudiante/index.php'
   },
   profesor: {
     usuario: 'profesor',
     contrasena: 'prof123',
-    destino: '/dashboards/docente/index.html'
+    destino: '../../dashboards/docente/index.php'
   },
   bibliotecario: {
     usuario: 'bibliotecario',
     contrasena: 'bib123',
-    destino: '/dashboards/bibliotecario/index.html'
+    destino: '../../dashboards/bibliotecario/index.php'
   }
 };
+  
+
 
 // ── Referencias al DOM ──────────────────────────────────────
 const form           = document.getElementById('login-form');

@@ -31,7 +31,7 @@ form.addEventListener('submit', (evt) => {
 )
 }
 
-const profileImage = '/dashboards/bibliotecario/images/silueta.png';
+const profileImage = '../images/silueta.png';
 function createProfileButton(containerId, sizeImage = 'btn-md'){
     const container = document.querySelector('#' + containerId);
     if (container) {
@@ -71,13 +71,13 @@ goBackButton.addEventListener('click', ()=>{
 
 const configBtn = document.querySelector('.config');
 configBtn.addEventListener('click', () =>{
-    window.location.href = "/dashboards/bibliotecario/pages/ajustes/ajustes.html";
+    window.location.href = "../pages/ajustes/ajustes.html";
 
 });
 
 const signOut = document.querySelector('.signout');
 signOut.addEventListener('click', () => {
-    window.location.href = "/index.html";
+    window.location.href = "../../../index.php";
 });
 
 

@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 
     <
-    <link rel="stylesheet" href="/shared/css/theme.css">
-    <link rel="stylesheet" href="/shared/css/components/notifications.css">
-    <link rel="stylesheet" href="/shared/css/components/navbar.css">
-    <link rel="stylesheet" href="/shared/css/components/book-card.css">
+    <link rel="stylesheet" href="../../../shared/css/theme.css">
+    <link rel="stylesheet" href="../../../shared/css/components/notifications.css">
+    <link rel="stylesheet" href="../../../shared/css/components/navbar.css">
+    <link rel="stylesheet" href="../../../shared/css/components/book-card.css">
     <link rel="stylesheet" href="book-view.css">
-    <link rel="stylesheet" href="/shared/css/components/footer.css">
-<base target="_blank">
+    <link rel="stylesheet" href="../../../shared/css/components/footer.css">
+<base target="_self">
 </head>
 <body>
 
@@ -275,7 +275,7 @@
                     <div class="book-cover-glow" aria-hidden="true"></div>
                     <div class="book-cover-frame">
                         <img
-                            src="/assets/images/books/cien-años-de-soledad.jpg"
+                            src="../../../assets/images/books/cien-años-de-soledad.jpg"
                             alt="Portada de Cien años de soledad"
                             class="book-cover-img"
                             loading="eager"
@@ -522,10 +522,9 @@
 
 
     <!-- Scripts -->
-    <script src="/shared/js/components/navbar.js"></script>
-    <script src="/shared/js/components/book-cards.js"></script>
-    <script src="/shared/js/global.js"></script>
-    <script src="catalogo.js"></script>
+    <script src="../../../shared/js/components/navbar.js"></script>
+    <script src="../../../shared/js/components/book-cards.js"></script>
+    <script src="../../../shared/js/global.js"></script>
     <script src="book-view.js"></script>
 
 </body>

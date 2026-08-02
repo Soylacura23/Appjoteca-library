@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/global.css">
+    <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="inventario.css">
-    <link rel="stylesheet" href="/shared/css/components/notifications.css">
-    <link rel="stylesheet" href="/shared/css/components/footer.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/theme.css">
-    <link rel="icon" type="image/png" href="/shared/images/logo-appjoteca.png">
-<base target="_blank">
+    <link rel="stylesheet" href="../../../../shared/css/components/notifications.css">
+    <link rel="stylesheet" href="../../../../shared/css/components/footer.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="favicon" type="image/png" href="../../../../shared/images/logo-appjoteca.png">
 <base target="_blank">
 </head>
 <body>
@@ -58,54 +57,48 @@
 
     <!-- Nav SIDEBAR -->
     <aside id="sidebar" class="sidebar">
-        <nav class="sidebar-navigator">
-
+    <nav class="sidebar-navigator">
             <ul class="menu-items">
-
                 <li>
-                    <a href="/dashboards/bibliotecario/index.html" class="menu-item">
+                    <a href="../../index.php" class="menu-item">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="menu-texto">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/inventario/inventario.html" class="menu-item active">
+                    <a href="inventario.php" class="menu-item active">
                         <span class="material-symbols-outlined">menu_book</span>
                         <span class="menu-texto">Inventario</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reservaciones/reservaciones.html" class="menu-item">
+                    <a href="../reservaciones/reservaciones.php" class="menu-item">
                         <span class="material-symbols-outlined">event_available</span>
                         <span class="menu-texto">Reservaciones</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/usuarios/usuarios.html" class="menu-item">
+                    <a href="../usuarios/usuarios.php" class="menu-item">
                         <span class="material-symbols-outlined">group</span>
                         <span class="menu-texto">Usuarios</span>
                     </a>
                 </li>
-
+                
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/programas/programas.html" class="menu-item">
+                    <a href="../programas/programas.php" class="menu-item">
                         <span class="material-symbols-outlined">school</span>
                         <span class="menu-texto">Programas</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reportes/reportes.html" class="menu-item">
+                    <a href="../reportes/reportes.php" class="menu-item">
                         <span class="material-symbols-outlined">analytics</span>
                         <span class="menu-texto">Reportes</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/ajustes/index.html" class="menu-item">
+                    <a href="../ajustes/ajustes.php" class="menu-item">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="menu-texto">Ajustes</span>
                     </a>
@@ -661,7 +654,7 @@
         </div>
     </main>
 
-    <script src="/dashboards/bibliotecario/js/global.js"></script>
+    <script src="../../js/global.js"></script>
     <script src="inventario.js"></script>
 </body>
 </html>

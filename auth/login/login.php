@@ -10,11 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300..700,0..1,0&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/auth/components/theme.css">
+  <link rel="stylesheet" href="../../auth/components/theme.css">
   <link rel="stylesheet" href="login.css">
 
-  <link rel="icon" type="image/png" href="/shared/images/logo-appjoteca.png">
-  <link rel="stylesheet" href="/shared/css/components/footer.css">
+  <link rel="icon" type="image/png" href="../../shared/images/logo-appjoteca.png">
+  <link rel="stylesheet" href="../../shared/css/components/footer.css">
 </head>
 
 <body>
@@ -24,11 +24,11 @@
        ════════════════════════════════════════════════════════ -->
   <header class="login-header" role="banner">
     <div class="login-header-container">
-      <a href="/index.html" class="logo-link" aria-label="Ir al inicio de Appjoteca">
-        <img src="/shared/images/logo-appjoteca.png" alt="Logo Appjoteca" class="logo-img">
+      <a href="../../index.php" class="logo-link" aria-label="Ir al inicio de Appjoteca">
+        <img src="../../shared/images/logo-appjoteca.png" alt="Logo Appjoteca" class="logo-img">
         <span class="logo-text">Appjoteca</span>
       </a>
-      <a href="/auth/signup/signup.html" class="btn-register">
+      <a href="../signup/signup.php" class="btn-register">
         <span class="material-symbols-outlined" style="font-size:15px;">person_add</span>
         <span>Registrarse</span>
       </a>
@@ -39,7 +39,7 @@
        BARRA DE REGRESO (debajo del header fijo)
        ════════════════════════════════════════════════════════ -->
   <div class="back-bar">
-    <a href="/index.html" class="btn-back" aria-label="Volver al inicio">
+    <a href="../../index.php" class="btn-back" aria-label="Volver al inicio">
       <span class="material-symbols-outlined">arrow_back</span>
       <span>Volver al inicio</span>
     </a>
@@ -97,7 +97,7 @@
         </header>
 
         <!-- ── Formulario ── -->
-        <form id="login-form" class="login-form" novalidate autocomplete="on">
+        <form id="login-form" class="login-form" novalidate autocomplete="on" action="autenticalogin.php" method="POST">
 
           <!-- Campo: Usuario -->
           <div class="field-group">
@@ -177,7 +177,7 @@
 
         <!-- Enlace de registro -->
         <div class="login-register-link">
-          <p>¿No tienes cuenta institucional? <a href="/auth/signup/signup.html">Crea una</a></p>
+          <p>¿No tienes cuenta institucional? <a href="/auth/signup/signup.php">Crea una</a></p>
         </div>
 
       </div>

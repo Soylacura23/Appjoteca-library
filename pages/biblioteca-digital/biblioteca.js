@@ -99,7 +99,7 @@
     }
 
     function verLibro(){
-        window.location.href="/pages/biblioteca-catalogo/vista-libro/book-view.html";
+        window.location.href="../biblioteca-catalogo/vista-libro/book-view.php";
     }
 
 });

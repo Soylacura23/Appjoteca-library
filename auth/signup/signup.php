@@ -10,11 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300..700,0..1,0&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/auth/components/theme.css">
+  <link rel="stylesheet" href="../components/theme.css">
   <link rel="stylesheet" href="signup.css">
 
-  <link rel="icon" type="image/png" href="/shared/images/logo-appjoteca.png">
-  <link rel="stylesheet" href="/shared/css/components/footer.css">
+  <link rel="icon" type="image/png" href="../../shared/images/logo-appjoteca.png">
+  <link rel="stylesheet" href="../../shared/css/components/footer.css">
 </head>
 
 <body>
@@ -24,11 +24,11 @@
        ════════════════════════════════════════════════════════ -->
   <header class="signup-header" role="banner">
     <div class="signup-header-container">
-      <a href="/index.html" class="logo-link" aria-label="Ir al inicio de Appjoteca">
-        <img src="/shared/images/logo-appjoteca.png" alt="Logo Appjoteca" class="logo-img">
+      <a href="../../index.php" class="logo-link" aria-label="Ir al inicio de Appjoteca">
+        <img src="../../shared/images/logo-appjoteca.png" alt="Logo Appjoteca" class="logo-img">
         <span class="logo-text">Appjoteca</span>
       </a>
-      <a href="/auth/login/login.html" class="btn-login-link" aria-label="Iniciar sesión">
+      <a href="../../auth/login/login.php" class="btn-login-link" aria-label="Iniciar sesión">
         <span class="material-symbols-outlined" style="font-size:15px;">login</span>
         <span>Iniciar sesión</span>
       </a>
@@ -78,7 +78,7 @@
         </header>
 
         <!-- ── Formulario ── -->
-        <form id="signup-form" class="signup-form" novalidate autocomplete="on">
+        <form id="signup-form" class="signup-form" novalidate autocomplete="on" action="../../xampappjoteca/insertar.php" method="POST" enctype="multipart/form-data">
 
           <!-- Campo: Nombre completo -->
           <div class="field-group">
@@ -150,31 +150,7 @@
             </div>
           </div>
 
-          <!-- Campo: Subir foto de la cédula -->
-          <div class="field-group">
-            <label class="field-label" for="cedula-file">Foto de la tarjeta de identidad <span class="required-mark" aria-hidden="true">*</span></label>
-            <div class="file-upload-wrapper">
-              <input
-                type="file"
-                id="cedula-file"
-                name="cedula-file"
-                class="file-input"
-                accept=".pdf,.png,.jpg,.jpeg,.webp"
-                required
-                aria-describedby="cedula-file-hint"
-              >
-              <label for="cedula-file" class="file-upload-label">
-                <span class="material-symbols-outlined" aria-hidden="true">cloud_upload</span>
-                <span class="file-upload-text">
-                  <strong>Arrastra o haz clic para subir</strong>
-                  <span>PDF, PNG, JPG, WEBP · Máx. 10 MB</span>
-                </span>
-              </label>
-              <div class="file-preview" id="cedula-preview" hidden></div>
-            </div>
-            <p class="field-hint" id="cedula-file-hint">Obligatorio. Se usa para verificar tu identidad institucional.</p>
-          </div>
-
+        
           <!-- Campo: Contraseña -->
           <div class="field-group">
             <label class="field-label" for="contrasena">Contraseña <span class="required-mark" aria-hidden="true">*</span></label>

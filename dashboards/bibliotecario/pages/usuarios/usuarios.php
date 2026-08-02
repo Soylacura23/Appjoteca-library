@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/global.css">
+    <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="usuarios.css">
-    <link rel="stylesheet" href="/shared/css/components/notifications.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/theme.css">
-    <link rel="stylesheet" href="/shared/css/components/footer.css">
-    <link rel="icon" type="image/png" href="/shared/images/logo-appjoteca.png">
+    <link rel="stylesheet" href="../../../../shared/css/components/notifications.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../../../shared/css/components/footer.css">
+    <link rel="favicon" type="image/png" href="../../../../shared/images/logo-appjoteca.png">
+<base target="_self">
 </head>
 <body>
 
@@ -61,45 +62,45 @@
         <nav class="sidebar-navigator">
             <ul class="menu-items">
                 <li>
-                    <a href="/dashboards/bibliotecario/index.html" class="menu-item">
+                    <a href="../../index.php" class="menu-item">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="menu-texto">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/inventario/inventario.html" class="menu-item">
+                    <a href="../inventario/inventario.php" class="menu-item">
                         <span class="material-symbols-outlined">menu_book</span>
                         <span class="menu-texto">Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reservaciones/reservaciones.html" class="menu-item">
+                    <a href="../reservaciones/reservaciones.php" class="menu-item">
                         <span class="material-symbols-outlined">event_available</span>
                         <span class="menu-texto">Reservaciones</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/usuarios/usuarios.html" class="menu-item active">
+                    <a href="usuarios.php" class="menu-item active">
                         <span class="material-symbols-outlined">group</span>
                         <span class="menu-texto">Usuarios</span>
                     </a>
                 </li>
                 
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/programas/programas.html" class="menu-item">
+                    <a href="../programas/programas.php" class="menu-item">
                         <span class="material-symbols-outlined">school</span>
                         <span class="menu-texto">Programas</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reportes/reportes.html" class="menu-item">
+                    <a href="../reportes/reportes.php" class="menu-item">
                         <span class="material-symbols-outlined">analytics</span>
                         <span class="menu-texto">Reportes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/ajustes/index.html" class="menu-item">
+                    <a href="../ajustes/ajustes.php" class="menu-item">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="menu-texto">Ajustes</span>
                     </a>
@@ -181,10 +182,10 @@
                             data-email="helena.rodriguez@institucion.edu.co"
                             data-created="Abril 15, 2026"
                             data-bio="Estudiante destacada en el área de humanidades. Participa activamente en el club de lectura y apoya las actividades de la biblioteca escolar."
-                            data-avatar="/dashboards/bibliotecario/images/perfil-helena.avif">
+                            data-avatar="../../images/perfil-helena.avif">
                             <td data-label="Perfil">
                                 <div class="user-cell">
-                                    <img src="/dashboards/bibliotecario/images/perfil-helena.avif" alt="Helena Rodriguez" class="user-avatar">
+                                    <img src="../../images/perfil-helena.avif" alt="Helena Rodriguez" class="user-avatar">
                                     <div class="user-info">
                                         <span class="user-name">Helena Rodriguez</span>
                                         <span class="user-subtitle">Grado 11 · Media Técnica</span>
@@ -211,10 +212,10 @@
                             data-email="carlos.mendoza@institucion.edu.co"
                             data-created="Enero 8, 2025"
                             data-bio="Profesor de Inglés dedicado a la enseñanza técnica y comunicativa. Enfocado en potenciar el bilingüismo en nuestra comunidad educativa."
-                            data-avatar="/dashboards/bibliotecario/images/silueta.png">
+                            data-avatar="../../images/silueta.png">
                             <td data-label="Perfil">
                                 <div class="user-cell">
-                                    <img src="/dashboards/bibliotecario/images/silueta.png" alt="Carlos Mendoza" class="user-avatar">
+                                    <img src="../../images/silueta.png" alt="Carlos Mendoza" class="user-avatar">
                                     <div class="user-info">
                                         <span class="user-name">Carlos Mendoza</span>
                                         <span class="user-subtitle">Profesor de Inglés Británico</span>
@@ -241,10 +242,10 @@
                             data-email="sofia.lopez@institucion.edu.co"
                             data-created="Marzo 2, 2026"
                             data-bio="Apasionada por la ciencia y la lectura. Frecuenta la biblioteca para consultar material de apoyo en matemáticas y biología."
-                            data-avatar="/dashboards/bibliotecario/images/silueta.png">
+                            data-avatar="../../images/silueta.png">
                             <td data-label="Perfil">
                                 <div class="user-cell">
-                                    <img src="/dashboards/bibliotecario/images/silueta.png" alt="Sofía López" class="user-avatar">
+                                    <img src="../../images/silueta.png" alt="Sofía López" class="user-avatar">
                                     <div class="user-info">
                                         <span class="user-name">Sofía López</span>
                                         <span class="user-subtitle">Grado 10 · Media Técnica</span>
@@ -271,10 +272,10 @@
                             data-email="maria.ruiz@institucion.edu.co"
                             data-created="Agosto 20, 2024"
                             data-bio="Docente con amplia experiencia en gestión bibliotecaria. Actualmente en proceso de traslado institucional."
-                            data-avatar="/dashboards/bibliotecario/images/silueta.png">
+                            data-avatar="../../images/silueta.png">
                             <td data-label="Perfil">
                                 <div class="user-cell">
-                                    <img src="/dashboards/bibliotecario/images/silueta.png" alt="María Fernanda Ruiz" class="user-avatar">
+                                    <img src="../../images/silueta.png" alt="María Fernanda Ruiz" class="user-avatar">
                                     <div class="user-info">
                                         <span class="user-name">María Fernanda Ruiz</span>
                                         <span class="user-subtitle">Coordinadora de Biblioteca</span>
@@ -525,7 +526,7 @@
         </div>
     </div>
 
-    <script src="/dashboards/bibliotecario/js/global.js"></script>
+    <script src="../../js/global.js"></script>
     <script src="usuarios.js"></script>
 </body>
 </html>

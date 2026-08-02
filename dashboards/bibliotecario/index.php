@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/global.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/dashboard.css">
-    <link rel="stylesheet" href="/dashboards/bibliotecario/css/theme.css">
-    <link rel="stylesheet" href="/shared/css/components/footer.css">
-    <link rel="icon" type="image/png"  href="/shared/images/logo-appjoteca.png">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="../../shared/css/components/footer.css">
+    <link rel="favicon" type="image/png"  href="../../shared/images/logo-appjoteca.png">
     
 </head>
 <body>
@@ -59,45 +59,45 @@
     <nav class="sidebar-navigator">
             <ul class="menu-items">
                 <li>
-                    <a href="/dashboards/bibliotecario/index.php" class="menu-item active">
+                    <a href="index.php" class="menu-item active">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="menu-texto">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/inventario/inventario.php" class="menu-item">
+                    <a href="pages/inventario/inventario.php" class="menu-item">
                         <span class="material-symbols-outlined">menu_book</span>
                         <span class="menu-texto">Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reservaciones/reservaciones.php" class="menu-item">
+                    <a href="pages/reservaciones/reservaciones.php" class="menu-item">
                         <span class="material-symbols-outlined">event_available</span>
                         <span class="menu-texto">Reservaciones</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/usuarios/usuarios.php" class="menu-item">
+                    <a href="pages/usuarios/usuarios.php" class="menu-item">
                         <span class="material-symbols-outlined">group</span>
                         <span class="menu-texto">Usuarios</span>
                     </a>
                 </li>
                 
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/programas/programas.php" class="menu-item">
+                    <a href="pages/programas/programas.php" class="menu-item">
                         <span class="material-symbols-outlined">school</span>
                         <span class="menu-texto">Programas</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/reportes/reportes.php" class="menu-item">
+                    <a href="pages/reportes/reportes.php" class="menu-item">
                         <span class="material-symbols-outlined">analytics</span>
                         <span class="menu-texto">Reportes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboards/bibliotecario/pages/ajustes/ajustes.php" class="menu-item">
+                    <a href="pages/ajustes/ajustes.php" class="menu-item">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="menu-texto">Ajustes</span>
                     </a>
@@ -116,7 +116,7 @@
                 <h1 class="headline-xl white-text">Supervisión de la biblioteca</h1>
 
                 <div class="hero-image">
-                    <img src="/dashboards/bibliotecario/images/dashboard-background.png" class="hero-background">
+                    <img src="images/dashboard-background.png" class="hero-background">
 
                     <div class="hero-overlay">
 
@@ -135,7 +135,7 @@
                             </button>
 
                             <button class="hero-image-button users" type="button">
-                                <a href="pages/usuarios/usuarios.html">
+                                <a href="pages/usuarios/usuarios.php">
                                     <span class="text-body white-text">Usuarios</span>
                                 </a>
                             </button>
@@ -292,7 +292,7 @@
 
                         <button class="white-text text-xs" id="gmail-icon" type="button">
                             <span class="left-button">
-                                <img src="/assets/icons/gmail.svg" alt="gmail" width="28" height="28">
+                                <img src="../../assets/icons/gmail.svg" alt="gmail" width="28" height="28">
                                 <span class="text-body white-text">Gmail</span>
                             </span>
                             <span class="right-button">

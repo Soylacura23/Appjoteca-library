@@ -270,12 +270,6 @@ a {
 /*              HERO CON IMAGEN               */
 /* ============================================ */
 
-/*
- ============================================
- PARA CAMBIAR LA IMAGEN DEL HEADER:
- Modifica la línea abajo cambiando la URL
- background-image: url("TU_IMAGEN_AQUI");
- ============================================
 */
 
 .hero-header {
@@ -283,8 +277,7 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  /* CAMBIA ESTA URL PARA LA IMAGEN DEL HEADER */
-  background-image: url("/assets/images/books/header.png");
+  background-image: url("../../assets/images/books/header.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
