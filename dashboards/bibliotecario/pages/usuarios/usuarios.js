@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const DELETE_CODE = '1234';
-  const CODE_VALIDITY_MINUTES = 15;
+  const usuarios = Array.isArray(window.USUARIOS_DATA) ? window.USUARIOS_DATA : [];
 
   const els = {
-    tbody: document.getElementById('users-tbody'),
     filterRole: document.getElementById('filter-role'),
     filterStatus: document.getElementById('filter-status'),
     statTotal: document.getElementById('stat-total'),
     statActive: document.getElementById('stat-active'),
     statStudents: document.getElementById('stat-students'),
     statTeachers: document.getElementById('stat-teachers'),
-    paginationInfo: document.getElementById('pagination-info'),
     searchToggleBtn: document.getElementById('search-toggle-btn'),
     searchMobile: document.getElementById('topbar-search-mobile'),
     searchMobileInput: document.getElementById('search-mobile-input'),
@@ -25,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     detailSubtitle: document.getElementById('detail-subtitle'),
     detailStatusBadge: document.getElementById('detail-status-badge'),
     detailBio: document.getElementById('detail-bio'),
-    detailPhone: document.getElementById('detail-phone'),
+    detailUsuario: document.getElementById('detail-usuario'),
     detailEmail: document.getElementById('detail-email'),
-    detailId: document.getElementById('detail-id'),
-    detailCreated: document.getElementById('detail-created'),
-    revealIdBtn: document.getElementById('reveal-id-btn'),
-    documentOverlay: document.querySelector('.document-overlay'),
+    detailDocumento: document.getElementById('detail-documento'),
+    detailRol: document.getElementById('detail-rol'),
+    detailDocImg: document.getElementById('detail-doc-img'),
+    idPlaceholder: document.getElementById('id-placeholder'),
     deleteAccountBtn: document.getElementById('delete-account-btn'),
 
     deleteConfirmModal: document.getElementById('delete-confirm-modal'),
@@ -38,75 +35,121 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteConfirmName: document.getElementById('delete-confirm-name'),
     deleteConfirmCancel: document.getElementById('delete-confirm-cancel'),
     deleteConfirmAccept: document.getElementById('delete-confirm-accept'),
-
-    deleteCodeModal: document.getElementById('delete-code-modal'),
-    deleteCodeBackdrop: document.getElementById('delete-code-backdrop'),
-    deleteCodeInput: document.getElementById('delete-code-input'),
-    deleteCodeError: document.getElementById('code-error'),
-    deleteCodeCancel: document.getElementById('delete-code-cancel'),
-    deleteCodeSubmit: document.getElementById('delete-code-submit'),
   };
 
-  let selectedRow = null;
-  let codeSentAt = null;
+  let selectedData = null;
 
-  function updateStats() {
-    const rows = [...els.tbody.querySelectorAll('tr.user')];
-    const visible = rows.filter(r => !r.classList.contains('hidden-row'));
-    els.statTotal.textContent = rows.length;
-    els.statActive.textContent = rows.filter(r => r.dataset.status === 'activo').length;
-    els.statStudents.textContent = rows.filter(r => r.dataset.role === 'Estudiante').length;
-    els.statTeachers.textContent = rows.filter(r => r.dataset.role === 'Docente').length;
-    els.paginationInfo.textContent = `Mostrando 1 a ${visible.length} de ${rows.length} usuarios`;
+  /* ── Tabla con Tabulator ─────────────────────────────────────── */
+  const table = new Tabulator('#users-table', {
+    data: usuarios,
+    index: 'id',
+    layout: 'fitColumns',
+    placeholder: 'No hay usuarios para mostrar',
+    columns: [
+      {
+        title: 'Perfil',
+        field: 'nombre',
+        minWidth: 240,
+        formatter(cell) {
+          const d = cell.getRow().getData();
+          return `
+            <div class="user-cell">
+              <img src="${d.foto_perfil}" alt="${d.nombre}" class="user-avatar">
+              <div class="user-info">
+                <span class="user-name">${d.nombre}</span>
+                <span class="user-subtitle">@${d.usuario}</span>
+              </div>
+            </div>`;
+        },
+      },
+      {
+        title: 'Rol',
+        field: 'rol',
+        width: 150,
+        formatter(cell) {
+          const d = cell.getRow().getData();
+          const claseRol = d.rol === 'Docente' ? 'rol-docente' : d.rol === 'Bibliotecario' ? 'rol-bibliotecario' : '';
+          return `<span class="rol-badge ${claseRol}"><span>${d.rol}</span></span>`;
+        },
+      },
+      { title: 'Documento', field: 'documento', width: 160 },
+      {
+        title: 'Estado',
+        field: 'estado',
+        width: 130,
+        formatter(cell) {
+          const valor = cell.getValue();
+          const clase = valor === 'activo' ? 'status-active' : 'status-inactive';
+          return `<span class="status-badge ${clase}">${valor}</span>`;
+        },
+      },
+    ],
+  });
+
+  table.on('rowClick', (e, row) => openOverlay(row.getData()));
+  table.on('dataFiltered', (filters, rows) => updateStats(rows.length));
+  table.on('tableBuilt', () => updateStats(usuarios.length));
+
+  function updateStats(visibleCount) {
+    const total = usuarios.length;
+    if (els.statTotal) els.statTotal.textContent = total;
+    if (els.statActive) els.statActive.textContent = usuarios.filter(u => u.estado === 'activo').length;
+    if (els.statStudents) els.statStudents.textContent = usuarios.filter(u => u.rol === 'Estudiante').length;
+    if (els.statTeachers) els.statTeachers.textContent = usuarios.filter(u => u.rol === 'Docente').length;
   }
 
   function applyFilters() {
-    const role = els.filterRole.value;
-    const status = els.filterStatus.value;
+    const role = els.filterRole?.value || '';
+    const status = els.filterStatus?.value || '';
     const query = (els.searchMobileInput?.value || els.searchDesktop?.value || '').trim().toLowerCase();
 
-    els.tbody.querySelectorAll('tr.user').forEach(row => {
-      const matchesRole = !role || row.dataset.role === role;
-      const matchesStatus = !status || row.dataset.status === status;
-      const haystack = [
-        row.dataset.name,
-        row.dataset.role,
-        row.dataset.id,
-        row.dataset.subtitle,
-        row.dataset.email,
-      ].join(' ').toLowerCase();
+    table.setFilter((data) => {
+      const matchesRole = !role || data.rol === role;
+      const matchesStatus = !status || data.estado === status;
+      const haystack = [data.nombre, data.usuario, data.rol, data.documento, data.correo]
+        .join(' ')
+        .toLowerCase();
       const matchesQuery = !query || haystack.includes(query);
-      row.classList.toggle('hidden-row', !(matchesRole && matchesStatus && matchesQuery));
+      return matchesRole && matchesStatus && matchesQuery;
     });
-
-    updateStats();
   }
 
-  function populateOverlay(row) {
-    const d = row.dataset;
-    els.detailTitle.textContent = d.name;
-    els.detailAvatar.src = d.avatar;
-    els.detailAvatar.alt = `Foto de ${d.name}`;
-    els.detailName.textContent = d.name;
-    els.detailSubtitle.textContent = d.subtitle || d.role;
-    els.detailBio.textContent = `"${d.bio}"`;
-    els.detailPhone.textContent = d.phone;
-    els.detailEmail.textContent = d.email;
-    els.detailId.textContent = d.id;
-    els.detailCreated.textContent = d.created;
+  function openOverlay(d) {
+    selectedData = d;
 
-    const isActive = d.status === 'activo';
-    els.detailStatusBadge.textContent = isActive ? 'Miembro Activo' : 'Inactivo';
+    els.detailTitle.textContent = d.nombre;
+    els.detailAvatar.src = d.foto_perfil;
+    els.detailAvatar.alt = `Foto de ${d.nombre}`;
+    els.detailName.textContent = d.nombre;
+    els.detailSubtitle.textContent = `@${d.usuario} · ${d.rol}`;
+    els.detailBio.textContent = d.biografia ? `"${d.biografia}"` : 'Sin biografía registrada.';
+
+    els.detailUsuario.textContent = d.usuario || '—';
+    els.detailEmail.textContent = d.correo || '—';
+    els.detailDocumento.textContent = d.documento || '—';
+    els.detailRol.textContent = d.rol || '—';
+
+    const isActive = d.estado === 'activo';
+    els.detailStatusBadge.textContent = isActive ? 'Activo' : 'Inactivo';
     els.detailStatusBadge.classList.toggle('inactive', !isActive);
 
-    if (els.documentOverlay) {
-      els.documentOverlay.classList.remove('hidden');
+    // window.AppUser lo define user_context.php con los datos de la sesión activa.
+    // No se puede eliminar la propia cuenta desde este panel.
+    const esMiPropiaCuenta = window.AppUser && String(window.AppUser.id) === String(d.id);
+    if (els.deleteAccountBtn) {
+      els.deleteAccountBtn.hidden = !!esMiPropiaCuenta;
     }
-  }
 
-  function openOverlay(row) {
-    selectedRow = row;
-    populateOverlay(row);
+    if (d.foto_documento) {
+      els.detailDocImg.src = d.foto_documento;
+      els.detailDocImg.hidden = false;
+      els.idPlaceholder.hidden = true;
+    } else {
+      els.detailDocImg.hidden = true;
+      els.detailDocImg.src = '';
+      els.idPlaceholder.hidden = false;
+    }
+
     els.detailOverlay.hidden = false;
     document.body.style.overflow = 'hidden';
   }
@@ -114,12 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeOverlay() {
     els.detailOverlay.hidden = true;
     document.body.style.overflow = '';
-    selectedRow = null;
+    selectedData = null;
   }
 
   function showDeleteConfirm() {
-    if (!selectedRow) return;
-    els.deleteConfirmName.textContent = selectedRow.dataset.name;
+    if (!selectedData) return;
+    els.deleteConfirmName.textContent = selectedData.nombre;
     els.deleteConfirmModal.hidden = false;
   }
 
@@ -127,33 +170,39 @@ document.addEventListener('DOMContentLoaded', () => {
     els.deleteConfirmModal.hidden = true;
   }
 
-  function showCodeModal() {
-    codeSentAt = Date.now();
-    els.deleteCodeInput.value = '';
-    els.deleteCodeError.hidden = true;
-    els.deleteCodeModal.hidden = false;
-    setTimeout(() => els.deleteCodeInput.focus(), 100);
-  }
-
-  function hideCodeModal() {
-    els.deleteCodeModal.hidden = true;
-    els.deleteCodeInput.value = '';
-    els.deleteCodeError.hidden = true;
-    codeSentAt = null;
-  }
-
-  function isCodeValid() {
-    if (!codeSentAt) return false;
-    const elapsed = Date.now() - codeSentAt;
-    return elapsed <= CODE_VALIDITY_MINUTES * 60 * 1000;
-  }
-
   function deleteSelectedUser() {
-    if (!selectedRow) return;
-    selectedRow.remove();
-    hideCodeModal();
+    if (!selectedData) return;
+
+    const usuarioAEliminar = selectedData;
+
+    // El JS limpia la fila de la tabla de inmediato (optimista)...
+    table.deleteRow(usuarioAEliminar.id);
+    const idx = usuarios.findIndex(u => u.id === usuarioAEliminar.id);
+    if (idx > -1) usuarios.splice(idx, 1);
+    updateStats(table.getDataCount('active'));
     closeOverlay();
-    applyFilters();
+
+    // ...pero si el backend falla, se revierte y se avisa.
+    // Nombre de archivo corregido: era 'usuarios_eliminar.php' (guion bajo,
+    // no existe) y por eso el borrado nunca llegaba a la base de datos.
+    fetch('usuarios-eliminar.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `id_usuario=${encodeURIComponent(usuarioAEliminar.id)}`,
+    })
+      .then(res => res.json().then(data => ({ status: res.status, data })))
+      .then(({ status, data }) => {
+        if (!data.ok) {
+          throw new Error(data.error || `Error ${status} al eliminar`);
+        }
+      })
+      .catch(err => {
+        // Revertir: volver a insertar el usuario en la tabla y en memoria
+        if (idx > -1) usuarios.splice(idx, 0, usuarioAEliminar);
+        table.addData([usuarioAEliminar]);
+        updateStats(table.getDataCount('active'));
+        alert(`No se pudo eliminar el usuario: ${err.message}`);
+      });
   }
 
   function toggleSearchMobile() {
@@ -165,21 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  els.tbody.addEventListener('click', (e) => {
-    const row = e.target.closest('tr.user');
-    if (!row || row.classList.contains('hidden-row')) return;
-    if (e.target.closest('.btn-view')) {
-      e.stopPropagation();
-    }
-    openOverlay(row);
-  });
-
   els.detailClose.addEventListener('click', closeOverlay);
   els.detailBackdrop.addEventListener('click', closeOverlay);
-
-  els.revealIdBtn?.addEventListener('click', () => {
-    els.documentOverlay?.classList.add('hidden');
-  });
 
   els.deleteAccountBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -190,31 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
   els.deleteConfirmBackdrop.addEventListener('click', hideDeleteConfirm);
   els.deleteConfirmAccept.addEventListener('click', () => {
     hideDeleteConfirm();
-    showCodeModal();
-  });
-
-  els.deleteCodeCancel.addEventListener('click', hideCodeModal);
-  els.deleteCodeBackdrop.addEventListener('click', hideCodeModal);
-  els.deleteCodeSubmit.addEventListener('click', () => {
-    const code = els.deleteCodeInput.value.trim();
-    if (!isCodeValid()) {
-      els.deleteCodeError.textContent = 'El código ha expirado. Solicite uno nuevo.';
-      els.deleteCodeError.hidden = false;
-      return;
-    }
-    if (code !== DELETE_CODE) {
-      els.deleteCodeError.textContent = 'Código incorrecto. Inténtelo de nuevo.';
-      els.deleteCodeError.hidden = false;
-      return;
-    }
     deleteSelectedUser();
-  });
-
-  els.deleteCodeInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      els.deleteCodeSubmit.click();
-    }
   });
 
   if (els.searchToggleBtn) {
@@ -230,10 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (!els.deleteCodeModal.hidden) { hideCodeModal(); return; }
     if (!els.deleteConfirmModal.hidden) { hideDeleteConfirm(); return; }
     if (!els.detailOverlay.hidden) { closeOverlay(); }
   });
-
-  updateStats();
 });

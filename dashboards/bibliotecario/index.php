@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/../../backend/config/auth.php';
+require_once __DIR__ . '/../../backend/config/user_context.php';
+requiereRol([3])
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +128,7 @@
 
 
                         <div class="hero-text" id="hero-text">
-                            <h2 class="headline-xl white-text" id="headline-lg">Bienvenido de vuelta, <br> Bibliotecario</h2>
+                            <h2 class="headline-xl white-text" id="headline-lg">Bienvenido de vuelta, <br> <?= $mi_nombre ?></h2>
                             <p class="text-body">Gestiona el inventario, revisa los préstamos activos y administra los usuarios de la biblioteca.</p>
                         </div>
 
@@ -163,7 +169,7 @@
                 
                 <div class="stat-card">
                     <p class="label text-sm">LIBROS TOTALES</p>
-                    <h3 class="stat-number white-text headline-md">12,402</h3>
+                    <h3 class="stat-number white-text headline-md"></h3>
                     <span class="percentage text-tertiary text-xs">
                         <span class="material-symbols-outlined">arrow_upward</span>
                         +2,8%

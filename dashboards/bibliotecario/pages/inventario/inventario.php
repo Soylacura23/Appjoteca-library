@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../../../shared/css/components/footer.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="favicon" type="image/png" href="../../../../shared/images/logo-appjoteca.png">
-<base target="_blank">
+<base target="_self">
 </head>
 <body>
     <!-- Topbar -->

@@ -13,9 +13,9 @@
     /* ════════════════════════════════════════════
        Config
     ════════════════════════════════════════════ */
-    var PROFILE_IMAGE = '/dashboards/bibliotecario/images/silueta.png';
-    var PROFILE_NAME  = 'Usuario';
-    var PROFILE_ROLE  = 'Lector Institucional';
+    var PROFILE_IMAGE = window.AppUser.foto;
+    var PROFILE_NAME  = window.AppUser.nombre;
+    var PROFILE_ROLE  = window.AppUser.rol;
 
     /* ════════════════════════════════════════════
        Overlay compartido
@@ -121,7 +121,7 @@
     var configBtn = document.querySelector('.menu-off-canva .config');
     if (configBtn) {
         configBtn.addEventListener('click', function () {
-            window.location.href = '/dashboards/bibliotecario/pages/ajustes/ajustes.html';
+            window.location.href = '../../pages/settings/configuracion.php';
         });
     }
 
@@ -129,7 +129,7 @@
     var signOutBtn = document.querySelector('.menu-off-canva .signout');
     if (signOutBtn) {
         signOutBtn.addEventListener('click', function () {
-            window.location.href = '/index.html';
+            window.location.href = '../../backend/auth/logout.php';
         });
     }
 

@@ -50,7 +50,7 @@
           <div class="role-grid" role="radiogroup" aria-labelledby="role-label">
 
             <label class="role-card" title="Registro como Estudiante">
-              <input type="radio" name="rol" value="estudiante" class="role-radio" checked aria-label="Estudiante">
+              <input type="radio" name="rol" value="estudiante" class="role-radio" checked aria-label="Estudiante" form="signup-form">
               <div class="role-card-inner">
                 <span class="material-symbols-outlined role-icon" aria-hidden="true">school</span>
                 <span class="role-name">Estudiante</span>
@@ -59,7 +59,7 @@
             </label>
 
             <label class="role-card" title="Registro como Profesor">
-              <input type="radio" name="rol" value="profesor" class="role-radio" aria-label="Profesor">
+              <input type="radio" name="rol" value="profesor" class="role-radio" aria-label="Profesor" form="signup-form">
               <div class="role-card-inner">
                 <span class="material-symbols-outlined role-icon" aria-hidden="true">history_edu</span>
                 <span class="role-name">Profesor</span>
@@ -78,7 +78,7 @@
         </header>
 
         <!-- ── Formulario ── -->
-        <form id="signup-form" class="signup-form" novalidate autocomplete="on" action="../../xampappjoteca/insertar.php" method="POST" enctype="multipart/form-data">
+        <form id="signup-form" class="signup-form" novalidate autocomplete="on" action="../../backend/auth/register-send.php" method="POST" enctype="multipart/form-data">
 
           <!-- Campo: Nombre completo -->
           <div class="field-group">
@@ -236,7 +236,7 @@
 
         <!-- Enlace a login -->
         <div class="signup-login-link">
-          <p>¿Ya tienes cuenta? <a href="/auth/login/login.html">Inicia sesión</a></p>
+          <p>¿Ya tienes cuenta? <a href="../login/login.php">Inicia sesión</a></p>
         </div>
 
       </div>
@@ -245,7 +245,7 @@
     </section>
     <!-- /signup-form-panel -->
 
-    <!-- ── Panel visual (imagen de biblioteca) — oculto en móvil, visible en desktop (DERECHA, STICKY) ── -->
+    
     <section class="signup-visual" aria-hidden="true">
       <div class="signup-visual-overlay"></div>
       <img

@@ -303,7 +303,7 @@
             <!-- Fondo -->
             <div class="hero-background">
                 <img
-                    src="../../assets/images/books/biblioteca-bg.png"
+                    src="../../assets/images/headers/biblioteca-bg.png"
                     alt="Biblioteca grandiosa"
                     class="hero-image"
                     loading="eager"

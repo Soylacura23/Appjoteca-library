@@ -1,30 +1,3 @@
-/* ============================================================
-   login.js — Autenticación · Appjoteca
-   Credenciales temporales hardcodeadas (sin base de datos)
-   ============================================================ */
-
-// ── Credenciales por rol ────────────────────────────────────
-
-const CREDENCIALES = {
-  estudiante: {
-    usuario: 'estudiante',
-    contrasena: 'est123',
-    destino: '../../dashboards/estudiante/index.php'
-  },
-  profesor: {
-    usuario: 'profesor',
-    contrasena: 'prof123',
-    destino: '../../dashboards/docente/index.php'
-  },
-  bibliotecario: {
-    usuario: 'bibliotecario',
-    contrasena: 'bib123',
-    destino: '../../dashboards/bibliotecario/index.php'
-  }
-};
-  
-
-
 // ── Referencias al DOM ──────────────────────────────────────
 const form           = document.getElementById('login-form');
 const errorBox       = document.getElementById('login-error');
@@ -46,7 +19,6 @@ togglePassBtn.addEventListener('click', () => {
   passInput.focus();
 });
 
-// ── Ocultar error al escribir en cualquier campo ────────────
 function ocultarError() {
   errorBox.hidden = true;
 }
@@ -58,7 +30,7 @@ roleInputs.forEach(r => r.addEventListener('change', ocultarError));
 function mostrarError(msg) {
   errorText.textContent = msg;
   errorBox.hidden = false;
-  // Reinicia la animación de temblor
+
   errorBox.style.animation = 'none';
   void errorBox.offsetWidth; // reflow
   errorBox.style.animation = '';
@@ -75,48 +47,66 @@ roleInputs.forEach(radio => {
   });
 });
 
-// ── Envío del formulario ────────────────────────────────────
-form.addEventListener('submit', (e) => {
+// ── Envío del formulario de Login ──────────────────────
+form.addEventListener('submit', async (e) => { 
   e.preventDefault();
 
   const rolSeleccionado = document.querySelector('.role-radio:checked')?.value;
   const usuario         = usuarioInput.value.trim();
   const contrasena      = passInput.value;
 
-  // Validaciones básicas
+  // Validaciones básicas de la vista
   if (!rolSeleccionado) {
     mostrarError('Selecciona tu tipo de acceso para continuar.');
     return;
   }
-
   if (!usuario) {
     mostrarError('Por favor, ingresa tu usuario o correo institucional.');
     usuarioInput.focus();
     return;
   }
-
   if (!contrasena) {
     mostrarError('Por favor, ingresa tu contraseña.');
     passInput.focus();
     return;
   }
 
-  // Verificar credenciales del rol seleccionado
-  const creds = CREDENCIALES[rolSeleccionado];
-
-  if (usuario !== creds.usuario || contrasena !== creds.contrasena) {
-    mostrarError('Usuario o contraseña incorrectos. Inténtalo de nuevo.');
-    passInput.value = '';
-    passInput.focus();
-    return;
-  }
-
-  // ── Éxito: feedback y redirección ──────────────────────
+  // Estilos visuales de carga
   btnLoginText.textContent = 'Verificando acceso…';
   btnLogin.disabled        = true;
   btnLogin.style.opacity   = '0.75';
 
-  setTimeout(() => {
-    window.location.href = creds.destino;
-  }, 700);
+  try {
+
+    const formData = new FormData(form);
+
+    const respuesta = await fetch('../../backend/auth/login-send.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const resultado = await respuesta.json();
+
+    if (resultado.status === 'success') {
+
+      setTimeout(() => {
+        window.location.href = resultado.redirect;
+      }, 700);
+    } else {
+
+      mostrarError(resultado.message || 'Usuario o contraseña incorrectos.');
+      btnLoginText.textContent = 'Iniciar Sesión';
+      btnLogin.disabled        = false;
+      btnLogin.style.opacity   = '1';
+      passInput.value = '';
+      passInput.focus();
+    }
+
+  } catch (err) {
+    mostrarError('Error de conexión con el servidor.');
+    btnLoginText.textContent = 'Iniciar Sesión';
+    btnLogin.disabled        = false;
+    btnLogin.style.opacity   = '1';
+    console.error(err);
+  }
 });

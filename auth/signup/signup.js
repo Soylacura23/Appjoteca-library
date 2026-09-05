@@ -1,8 +1,3 @@
-/* ============================================================
-   signup.js — Registro · Appjoteca
-   Validación cliente + simulación de envío
-   ============================================================ */
-
 // ── Referencias al DOM ──────────────────────────────────────
 const form            = document.getElementById('signup-form');
 const errorBox        = document.getElementById('signup-error');
@@ -237,28 +232,38 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   ocultarMensajes();
 
-  const datos = validarFormulario();
-  if (!datos) return;
+  // 1. Tus validaciones locales de JS
+  const datosValidos = validarFormulario(); 
+  if (!datosValidos) return;
 
   setLoading(true);
-
-  // Simular envío al servidor
+  
   try {
-    await new Promise(resolve => setTimeout(resolve, 1200));
 
-    // Aquí iría la llamada real: fetch('/api/auth/signup', { method: 'POST', body: JSON.stringify(datos) })
-    // Por ahora simulamos éxito
+    const formData = new FormData(form);
 
-    mostrarExito('¡Cuenta creada correctamente! Redirigiendo al inicio de sesión…');
-    setLoading(false);
+    const respuesta = await fetch(form.action, {
+      method: form.method,
+      body: formData // Envía texto, radios y archivos automáticamente
+    });
 
-    // Redirigir a login después de 2 segundos
-    setTimeout(() => {
-      window.location.href = '/auth/login/login.html';
-    }, 2000);
+    const resultado = await respuesta.json();
+
+    if (resultado.status === 'success') {
+      mostrarExito('¡Cuenta creada correctamente! Redirigiendo al inicio de sesión…');
+      setLoading(false);
+
+      setTimeout(() => {
+        window.location.href = '../login/login.php';
+      }, 2000);
+    } else {
+      setLoading(false);
+      mostrarError(resultado.message || 'Error al registrar la cuenta.');
+    }
 
   } catch (err) {
     setLoading(false);
-    mostrarError('Error al crear la cuenta. Inténtalo de nuevo.');
+    mostrarError('Error de red o servidor. Inténtalo de nuevo.');
+    console.error(err);
   }
 });

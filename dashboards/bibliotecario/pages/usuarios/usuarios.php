@@ -1,3 +1,35 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . '/../../../../backend/config/auth.php';
+require_once __DIR__ . '/../../../../backend/config/user_context.php';
+
+requiereRol([3]);
+
+require_once __DIR__ . '/../../../../backend/Database/conexion.php';
+
+$usuarios = [];
+$resultado = mysqli_query($connection, "SELECT id_usuario, id_rol, nombre_apellido, nombre_usuario, correo_institucional, documento, foto_perfil, foto_documento, biografia, estado FROM usuarios WHERE id_rol = 1, 2");
+
+while ($fila = mysqli_fetch_assoc($resultado)) {
+    $usuarios[] = [
+        'id'             => $fila['id_usuario'],
+        'rol'            => $diccionario_roles[$fila['id_rol']] ?? 'Sin rol',
+        'nombre'         => $fila['nombre_apellido'],
+        'usuario'        => $fila['nombre_usuario'],
+        'correo'         => $fila['correo_institucional'],
+        'documento'      => $fila['documento'],
+        'foto_perfil'    => $fila['foto_perfil'],
+        'foto_documento' => $fila['foto_documento'],
+        'biografia'      => $fila['biografia'],
+        'estado'         => $fila['estado'] == 1 ? 'activo' : 'inactivo',
+    ];
+}
+
+mysqli_close($connection);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +40,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator_midnight.min.css">
     <link rel="stylesheet" href="usuarios.css">
     <link rel="stylesheet" href="../../../../shared/css/components/notifications.css">
     <link rel="stylesheet" href="../../css/theme.css">
@@ -85,7 +118,7 @@
                         <span class="menu-texto">Usuarios</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="../programas/programas.php" class="menu-item">
                         <span class="material-symbols-outlined">school</span>
@@ -115,7 +148,7 @@
             <div class="page-hero-text">
                 <p class="text-eyebrow">Gestión de miembros</p>
                 <h1 class="headline-xl white-text">Directorio de Usuarios</h1>
-                <p class="text-body text-muted">Gestionando estudiantes y docentes en la biblioteca</p>
+                <p class="text-body text-muted">Gestionando estudiantes, docentes y bibliotecarios en la biblioteca</p>
             </div>
         </section>
 
@@ -123,19 +156,19 @@
             <div class="toolbar-stats">
                 <div class="stat-item">
                     <span class="material-symbols-outlined stat-icon">group</span>
-                    <div class="stat-info"><strong id="stat-total">4</strong><span>Usuarios</span></div>
+                    <div class="stat-info"><strong id="stat-total">0</strong><span>Usuarios</span></div>
                 </div>
                 <div class="stat-item available">
                     <span class="material-symbols-outlined stat-icon">check_circle</span>
-                    <div class="stat-info"><strong id="stat-active">3</strong><span>Activos</span></div>
+                    <div class="stat-info"><strong id="stat-active">0</strong><span>Activos</span></div>
                 </div>
                 <div class="stat-item">
                     <span class="material-symbols-outlined stat-icon">school</span>
-                    <div class="stat-info"><strong id="stat-students">2</strong><span>Estudiantes</span></div>
+                    <div class="stat-info"><strong id="stat-students">0</strong><span>Estudiantes</span></div>
                 </div>
                 <div class="stat-item">
                     <span class="material-symbols-outlined stat-icon">co_present</span>
-                    <div class="stat-info"><strong id="stat-teachers">2</strong><span>Docentes</span></div>
+                    <div class="stat-info"><strong id="stat-teachers">0</strong><span>Docentes</span></div>
                 </div>
             </div>
             <div class="toolbar-filters">
@@ -145,6 +178,7 @@
                         <option value="">Todos</option>
                         <option value="Estudiante">Estudiantes</option>
                         <option value="Docente">Docentes</option>
+                        <option value="Bibliotecario">Bibliotecarios</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -160,152 +194,7 @@
 
         <section class="users-section" aria-label="Listado de usuarios">
             <div class="user-tables">
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>Perfil</th>
-                            <th>Rol</th>
-                            <th>ID Institucional</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="users-tbody">
-                        <tr class="user"
-                            data-user-id="1"
-                            data-name="Helena Rodriguez"
-                            data-role="Estudiante"
-                            data-subtitle="Grado 11 · Media Técnica"
-                            data-id="1186404044"
-                            data-status="activo"
-                            data-phone="+57 (315) 4629356"
-                            data-email="helena.rodriguez@institucion.edu.co"
-                            data-created="Abril 15, 2026"
-                            data-bio="Estudiante destacada en el área de humanidades. Participa activamente en el club de lectura y apoya las actividades de la biblioteca escolar."
-                            data-avatar="../../images/perfil-helena.avif">
-                            <td data-label="Perfil">
-                                <div class="user-cell">
-                                    <img src="../../images/perfil-helena.avif" alt="Helena Rodriguez" class="user-avatar">
-                                    <div class="user-info">
-                                        <span class="user-name">Helena Rodriguez</span>
-                                        <span class="user-subtitle">Grado 11 · Media Técnica</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-label="Rol"><span class="rol-badge"><span>Estudiante</span></span></td>
-                            <td data-label="ID">1186404044</td>
-                            <td data-label="Estado"><span class="status-badge status-active">activo</span></td>
-                            <td class="actions" data-label="Acciones">
-                                <button type="button" class="btn-view" aria-label="Ver detalle">
-                                    <span class="material-symbols-outlined">visibility</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="user"
-                            data-user-id="2"
-                            data-name="Carlos Mendoza"
-                            data-role="Docente"
-                            data-subtitle="Profesor de Inglés Británico"
-                            data-id="1098765432"
-                            data-status="activo"
-                            data-phone="+57 (300) 8812345"
-                            data-email="carlos.mendoza@institucion.edu.co"
-                            data-created="Enero 8, 2025"
-                            data-bio="Profesor de Inglés dedicado a la enseñanza técnica y comunicativa. Enfocado en potenciar el bilingüismo en nuestra comunidad educativa."
-                            data-avatar="../../images/silueta.png">
-                            <td data-label="Perfil">
-                                <div class="user-cell">
-                                    <img src="../../images/silueta.png" alt="Carlos Mendoza" class="user-avatar">
-                                    <div class="user-info">
-                                        <span class="user-name">Carlos Mendoza</span>
-                                        <span class="user-subtitle">Profesor de Inglés Británico</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-label="Rol"><span class="rol-badge rol-docente"><span>Docente</span></span></td>
-                            <td data-label="ID">1098765432</td>
-                            <td data-label="Estado"><span class="status-badge status-active">activo</span></td>
-                            <td class="actions" data-label="Acciones">
-                                <button type="button" class="btn-view" aria-label="Ver detalle">
-                                    <span class="material-symbols-outlined">visibility</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="user"
-                            data-user-id="3"
-                            data-name="Sofía López"
-                            data-role="Estudiante"
-                            data-subtitle="Grado 10 · Media Técnica"
-                            data-id="1154321098"
-                            data-status="activo"
-                            data-phone="+57 (318) 9901234"
-                            data-email="sofia.lopez@institucion.edu.co"
-                            data-created="Marzo 2, 2026"
-                            data-bio="Apasionada por la ciencia y la lectura. Frecuenta la biblioteca para consultar material de apoyo en matemáticas y biología."
-                            data-avatar="../../images/silueta.png">
-                            <td data-label="Perfil">
-                                <div class="user-cell">
-                                    <img src="../../images/silueta.png" alt="Sofía López" class="user-avatar">
-                                    <div class="user-info">
-                                        <span class="user-name">Sofía López</span>
-                                        <span class="user-subtitle">Grado 10 · Media Técnica</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-label="Rol"><span class="rol-badge"><span>Estudiante</span></span></td>
-                            <td data-label="ID">1154321098</td>
-                            <td data-label="Estado"><span class="status-badge status-active">activo</span></td>
-                            <td class="actions" data-label="Acciones">
-                                <button type="button" class="btn-view" aria-label="Ver detalle">
-                                    <span class="material-symbols-outlined">visibility</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="user"
-                            data-user-id="4"
-                            data-name="María Fernanda Ruiz"
-                            data-role="Docente"
-                            data-subtitle="Coordinadora de Biblioteca"
-                            data-id="1034567890"
-                            data-status="inactivo"
-                            data-phone="+57 (310) 5567890"
-                            data-email="maria.ruiz@institucion.edu.co"
-                            data-created="Agosto 20, 2024"
-                            data-bio="Docente con amplia experiencia en gestión bibliotecaria. Actualmente en proceso de traslado institucional."
-                            data-avatar="../../images/silueta.png">
-                            <td data-label="Perfil">
-                                <div class="user-cell">
-                                    <img src="../../images/silueta.png" alt="María Fernanda Ruiz" class="user-avatar">
-                                    <div class="user-info">
-                                        <span class="user-name">María Fernanda Ruiz</span>
-                                        <span class="user-subtitle">Coordinadora de Biblioteca</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-label="Rol"><span class="rol-badge rol-docente"><span>Docente</span></span></td>
-                            <td data-label="ID">1034567890</td>
-                            <td data-label="Estado"><span class="status-badge status-inactive">inactivo</span></td>
-                            <td class="actions" data-label="Acciones">
-                                <button type="button" class="btn-view" aria-label="Ver detalle">
-                                    <span class="material-symbols-outlined">visibility</span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3" id="pagination-info">Mostrando 1 a 4 de 4 usuarios</td>
-                            <td colspan="2">
-                                <button type="button" class="previous" aria-label="Página anterior" disabled>
-                                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                                </button>
-                                <button type="button" class="next" aria-label="Página siguiente" disabled>
-                                    <span class="material-symbols-outlined">arrow_forward_ios</span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div id="users-table"></div>
             </div>
         </section>
 
@@ -389,7 +278,6 @@
                         <p id="detail-subtitle" class="detail-subtitle"></p>
                         <div class="detail-badges">
                             <span class="badge-status" id="detail-status-badge"></span>
-                            <span class="badge-verified">Verificado</span>
                         </div>
                     </div>
                 </div>
@@ -402,20 +290,20 @@
                     <div class="section-fields">
                         <p class="detail-bio" id="detail-bio"></p>
                         <div class="info-row">
-                            <span class="info-label">Teléfono</span>
-                            <span class="info-value" id="detail-phone"></span>
+                            <span class="info-label">Usuario</span>
+                            <span class="info-value" id="detail-usuario"></span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Correo</span>
+                            <span class="info-label">Correo institucional</span>
                             <span class="info-value" id="detail-email"></span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">ID Institucional</span>
-                            <span class="info-value" id="detail-id"></span>
+                            <span class="info-label">Documento</span>
+                            <span class="info-value" id="detail-documento"></span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Creado</span>
-                            <span class="info-value" id="detail-created"></span>
+                            <span class="info-label">Rol</span>
+                            <span class="info-value" id="detail-rol"></span>
                         </div>
                     </div>
                 </section>
@@ -427,30 +315,10 @@
                     </div>
                     <div class="section-fields">
                         <div class="id-preview" id="id-preview">
-                            <div class="id-placeholder">
+                            <img class="id-preview-img" id="detail-doc-img" src="" alt="Documento de identidad" hidden>
+                            <div class="id-placeholder" id="id-placeholder">
                                 <span class="material-symbols-outlined">badge</span>
-                                <span>Documento protegido</span>
-                            </div>
-                            <div class="document-overlay">
-                                <button type="button" class="show-up" id="reveal-id-btn">
-                                    <span class="material-symbols-outlined">eye_tracking</span>
-                                    <span>Revelar ID</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="detail-section">
-                    <div class="section-label">
-                        <span class="material-symbols-outlined">history</span>
-                        Historial del usuario
-                    </div>
-                    <div class="section-fields">
-                        <div class="history-space" id="detail-history">
-                            <div class="history-card">
-                                <p>Reservó "La Odisea"</p>
-                                <p>Ayer a las 10:05 PM</p>
+                                <span>Sin documento cargado</span>
                             </div>
                         </div>
                     </div>
@@ -486,27 +354,6 @@
         </div>
     </div>
 
-    <!-- Modal: verificación por código -->
-    <div class="confirm-modal" id="delete-code-modal" role="dialog" aria-modal="true" aria-labelledby="delete-code-title" hidden>
-        <div class="confirm-backdrop" id="delete-code-backdrop"></div>
-        <div class="confirm-box confirm-box-wide">
-            <div class="confirm-icon confirm-icon-info">
-                <span class="material-symbols-outlined">mail</span>
-            </div>
-            <h3 id="delete-code-title">Verificación requerida</h3>
-            <p>Se ha enviado un código al correo electrónico asociado con su cuenta de bibliotecario. El código es válido por <strong>15 minutos</strong> para autorizar la eliminación de cuentas.</p>
-            <div class="code-input-group">
-                <label for="delete-code-input" class="form-label">Código de verificación</label>
-                <input type="text" id="delete-code-input" class="form-input code-input" placeholder="Ingresa el código" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
-                <p class="code-hint" id="code-error" hidden>Código incorrecto o expirado. Inténtelo de nuevo.</p>
-            </div>
-            <div class="confirm-actions">
-                <button type="button" class="btn btn-ghost" id="delete-code-cancel">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="delete-code-submit">Verificar y eliminar</button>
-            </div>
-        </div>
-    </div>
-
     <div id="overlay" class="overlay"></div>
 
     <div class="notification-container" id="notification-container"></div>
@@ -519,13 +366,20 @@
                 <span class="material-symbols-outlined">settings</span>
                 Configuración
             </button>
-            <button class="signout">
+            <button class="signout" href="../../../../backend/auth/logout.php">
                 <span class="material-symbols-outlined">logout</span>
                 Cerrar Sesión
             </button>
         </div>
     </div>
 
+    <script>
+        // Usuarios recién consultados por PHP en esta carga, listos para Tabulator.
+        // Se asigna explícitamente en window: un `const`/`let` de script global
+        // NO queda como propiedad de window, y usuarios.js lee window.USUARIOS_DATA.
+        window.USUARIOS_DATA = <?= json_encode($usuarios, JSON_UNESCAPED_UNICODE) ?>;
+    </script>
+    <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
     <script src="../../js/global.js"></script>
     <script src="usuarios.js"></script>
 </body>

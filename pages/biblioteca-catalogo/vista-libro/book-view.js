@@ -1,3 +1,3 @@
 function cambiarPagina() {
-    window.location.href = "/pages/biblioteca-catalogo/biblioteca-reservacion/reservacion.html";
+    window.location.href = "../biblioteca-reservacion/reservacion.php";
   }

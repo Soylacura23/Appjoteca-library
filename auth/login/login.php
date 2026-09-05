@@ -60,7 +60,7 @@
           <div class="role-grid" role="radiogroup" aria-labelledby="role-label">
 
             <label class="role-card" title="Acceso como Estudiante">
-              <input type="radio" name="rol" value="estudiante" class="role-radio" checked aria-label="Estudiante">
+              <input type="radio" name="rol" value="estudiante" class="role-radio" checked aria-label="Estudiante" form= "login-form">
               <div class="role-card-inner">
                 <span class="material-symbols-outlined role-icon" aria-hidden="true">school</span>
                 <span class="role-name">Estudiante</span>
@@ -69,7 +69,7 @@
             </label>
 
             <label class="role-card" title="Acceso como Profesor">
-              <input type="radio" name="rol" value="profesor" class="role-radio" aria-label="Profesor">
+              <input type="radio" name="rol" value="profesor" class="role-radio" aria-label="Profesor" form="login-form">
               <div class="role-card-inner">
                 <span class="material-symbols-outlined role-icon" aria-hidden="true">history_edu</span>
                 <span class="role-name">Profesor</span>
@@ -78,11 +78,11 @@
             </label>
 
             <label class="role-card" title="Acceso como Bibliotecario">
-              <input type="radio" name="rol" value="bibliotecario" class="role-radio" aria-label="Bibliotecario">
+              <input type="radio" name="rol" value="bibliotecario" class="role-radio" aria-label="Bibliotecario" form="login-form">
               <div class="role-card-inner">
                 <span class="material-symbols-outlined role-icon" aria-hidden="true">local_library</span>
                 <span class="role-name">Bibliotecario</span>
-                <span class="role-desc">Administra la colección</span>
+                <span class="role-desc">Administra la biblioteca</span>
               </div>
             </label>
 
@@ -97,18 +97,18 @@
         </header>
 
         <!-- ── Formulario ── -->
-        <form id="login-form" class="login-form" novalidate autocomplete="on" action="autenticalogin.php" method="POST">
+        <form id="login-form" class="login-form" novalidate autocomplete="on" action="../../backend/auth/login-send.php" method="POST">
 
           <!-- Campo: Usuario -->
           <div class="field-group">
-            <label class="field-label" for="usuario">Correo institucional o usuario único</label>
+            <label class="field-label" for="usuario">Nombre único</label>
             <div class="field-wrapper">
               <input
                 type="text"
                 id="usuario"
                 name="usuario"
                 class="field-input"
-                placeholder="correo@institución.edu o nombre_usuario"
+                placeholder="nombre de usuario"
                 autocomplete="username"
                 required
               >
@@ -119,7 +119,7 @@
           <div class="field-group">
             <div class="field-label-row">
               <label class="field-label" for="contrasena">Contraseña</label>
-              <a href="#" class="field-forgot" tabindex="0">¿Olvidaste tu contraseña?</a>
+              <a href="../recover/recover.php" class="field-forgot" tabindex="0">¿Olvidaste tu contraseña?</a>
             </div>
             <div class="field-wrapper field-wrapper--password">
               <input
@@ -177,7 +177,7 @@
 
         <!-- Enlace de registro -->
         <div class="login-register-link">
-          <p>¿No tienes cuenta institucional? <a href="/auth/signup/signup.php">Crea una</a></p>
+          <p>¿No tienes cuenta institucional? <a href="../signup/signup.php">Crea una</a></p>
         </div>
 
       </div>

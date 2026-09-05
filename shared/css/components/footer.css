@@ -1,10 +1,9 @@
 .footer {
   background: var(--surface-container-low, #0c0c0c);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  /* Esquinas redondeadas solo en la parte superior */
+  
   border-radius: 24px 24px 0 0;
   margin-top: auto;
-  /* Para que el footer se quede al final en páginas cortas */
   position: relative;
   z-index: 10;
 }
